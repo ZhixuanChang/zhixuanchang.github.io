@@ -71,3 +71,43 @@ reg  [15:0]     array[16][8]; // SystemVerilog中多维定宽数组的定义方�
     - `foreach (q[i]) begin ...`：使用`foreach`操作队列中的元素。
     - `q.delete();`：删除整个队列。
 - 队列的优点：可以方便地在指定索引处插入和删除元素，操作效率比动态数组更高。
+
+### 关联数组
+- 声明方式：在方括号中放置数据类型。`bit [63:0] assoc[bit[63:0]];`
+- 仿真器会采用树或者哈希表的形式来存放关联数组，有一定的开销。所以只有当保存索引值比较分散的数组时，关联数组才具有优势。
+- 关联数组的常用方法：
+    - `foreach(assoc[i]) begin ...`：使用`foreach`遍历关联数组中的所有值。
+    - `assoc.first(idx)`：得到关联数组的第一个索引值。
+    - `assoc.next(idx)`：得到关联数组的下一个索引值。
+    - `assoc.delete(idx)`：删除指定索引值的元素。
+    - `assoc.exist(idx)`：判断关联数组`assoc`中是否存在索引`idx`。
+
+### 链表
+- SystemVerilog中提供了链表数据结构，但是应当尽量避免使用。使用队列会更加高效。
+
+### 数组的方法
+- SystemVerilog中数组的方法可以适用于任何非合并数组，包括定宽数组、动态数组、队列和关联数组。
+- 数组缩减方法
+    - `array.sum`，将数组中所有的元素求和，并将结果保存在一个与array的元素同样位宽的变量中。
+    - `array.product`
+    - `array.and`
+    - `array.or`
+    - `array.xor`
+    - `$array[urandom_range(array.size()-1)]`：从数组中随机选出一个值。但是注意，对于关联数组，无法直接访问到第N个值，需要从第1个值开始遍历。
+        ```
+        // 从关联数组中取出随机的一个元素
+        int aa [int], rand_idx, element, count;
+
+        element = $urandom_range(aa.size()-1);
+        foreach(aa[i])
+            if (count++ == element) begin
+                rand_idx = i;
+                break;
+            end
+        
+        int val = aa[rand_idx];
+        ```
+- 数组定位方法
+    - `array.min();`：返回包含数组`array`中最小元素的队列；
+    - `array.max();`：返回包含数组`array`中最大元素的队列；
+    - `array.unique();`：返回删去数组中重复元素（对于重复元素，只保留其中一个）之后的队列；
