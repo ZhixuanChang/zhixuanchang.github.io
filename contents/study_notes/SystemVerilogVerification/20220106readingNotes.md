@@ -22,7 +22,7 @@
 reg  lo_hi [15:0]; // verilog中的定宽数组定义方式
 
 reg  lo_hi [16]; // SystemVerilog中一维定宽数组的定义方式，此时默认下标为0
-reg  [15:0]     array[16][8]; // SystemVerilog中多维定宽数组的定义方式
+reg  [15:0]   array[16][8]; // SystemVerilog中多维定宽数组的定义方式
 ```
 
 ### 常量数组
@@ -33,22 +33,22 @@ reg  [15:0]     array[16][8]; // SystemVerilog中多维定宽数组的定义方�
 
 ### 对数组的操作
 - `for`与`foreach`
-    - `for`循环在`initial`块中被调用。（需要注意的是，`initial`块通常来说是不可综合的。）
-    - `foreach`循环也需要在`initial`块中被调用。
-    - 针对多维数组，`foreach`的调用方式为`foreach (array[i, j]) begin ...`，也即，需要把多个索引变量放在同一个方括号里。
+  - `for`循环在`initial`块中被调用。（需要注意的是，`initial`块通常来说是不可综合的。）
+  - `foreach`循环也需要在`initial`块中被调用。
+  - 针对多维数组，`foreach`的调用方式为`foreach (array[i, j]) begin ...`，也即，需要把多个索引变量放在同一个方括号里。
 - 复制和比较
-    - 对于两个结构（包括数组元素的位宽、数组的尺寸以及维数）一致的数组，可以直接对数组进行比较和赋值。
-    - 两个数组只能进行相等或不相等的比较。
-    - 可以对数组进行切片之后，再进行比较和赋值操作，只需切片后的数组的结构一致。
+  - 对于两个结构（包括数组元素的位宽、数组的尺寸以及维数）一致的数组，可以直接对数组进行比较和赋值。
+  - 两个数组只能进行相等或不相等的比较。
+  - 可以对数组进行切片之后，再进行比较和赋值操作，只需切片后的数组的结构一致。
 - 同时使用数组下标和位下标
-    - 在Verilog-2001中被首次添加，并非SystemVerilog的新增特性。
+  - 在Verilog-2001中被首次添加，并非SystemVerilog的新增特性。
 - 合并数组
-    - 合并数组的声明方式：`bit [3:0][7:0] barray;`。即维数信息全部写在变量名的左侧。
-    - 声明合并数组的时候，必须使用`[msb:lsb]`的方式，不能使用`[size]`的方式。
-    - 合并数组和非合并数组可以混用。
-    - 合并数组在存储时会保存在连续的bit中。因此可以作为一个整体的多位数据来使用。
-    - 当需要将数组与标量进行转换的时候，使用合并数组更方便一些。
-    - `@`操作符只能作用于合并数组（用于`always`或者`initial`块中的敏感信号列表）。
+  - 合并数组的声明方式：`bit [3:0][7:0] barray;`。即维数信息全部写在变量名的左侧。
+  - 声明合并数组的时候，必须使用`[msb:lsb]`的方式，不能使用`[size]`的方式。
+  - 合并数组和非合并数组可以混用。
+  - 合并数组在存储时会保存在连续的bit中。因此可以作为一个整体的多位数据来使用。
+  - 当需要将数组与标量进行转换的时候，使用合并数组更方便一些。
+  - `@`操作符只能作用于合并数组（用于`always`或者`initial`块中的敏感信号列表）。
 
 ### 动态数组
 - 使用空下标定义：`int dyn[];`。
@@ -62,25 +62,25 @@ reg  [15:0]     array[16][8]; // SystemVerilog中多维定宽数组的定义方�
 - 声明方式：`int qu[$];`，使用带`$`符号的下标进行定义。
 - 队列可以在声明的时候赋初值，和常量数组一致，但是不使用`'`。`int qu[$] = {1, 2, 3, 4};`
 - 队列的常用方法：
-    - `q.insert(index, value);`：在`index`处插入元素`value`。
-    - `q.delete(index);`：删除第`index`个元素。
-    - `q.push_front(value);`：在队列前面插入。
-    - `val = q.pop_back;`：将队列尾部的数据赋值给`val`，然后将队列尾部的数据删除。
-    - `q.push_back(value);`：在队列尾部插入。
-    - `val = q.pop_front;`：将队列头部的元素赋值给`val`，然后将队列头部的元素删除。
-    - `foreach (q[i]) begin ...`：使用`foreach`操作队列中的元素。
-    - `q.delete();`：删除整个队列。
+  - `q.insert(index, value);`：在`index`处插入元素`value`。
+  - `q.delete(index);`：删除第`index`个元素。
+  - `q.push_front(value);`：在队列前面插入。
+  - `val = q.pop_back;`：将队列尾部的数据赋值给`val`，然后将队列尾部的数据删除。
+  - `q.push_back(value);`：在队列尾部插入。
+  - `val = q.pop_front;`：将队列头部的元素赋值给`val`，然后将队列头部的元素删除。
+  - `foreach (q[i]) begin ...`：使用`foreach`操作队列中的元素。
+  - `q.delete();`：删除整个队列。
 - 队列的优点：可以方便地在指定索引处插入和删除元素，操作效率比动态数组更高。
 
 ### 关联数组
 - 声明方式：在方括号中放置数据类型。`bit [63:0] assoc[bit[63:0]];`
 - 仿真器会采用树或者哈希表的形式来存放关联数组，有一定的开销。所以只有当保存索引值比较分散的数组时，关联数组才具有优势。
 - 关联数组的常用方法：
-    - `foreach(assoc[i]) begin ...`：使用`foreach`遍历关联数组中的所有值。
-    - `assoc.first(idx)`：得到关联数组的第一个索引值。
-    - `assoc.next(idx)`：得到关联数组的下一个索引值。
-    - `assoc.delete(idx)`：删除指定索引值的元素。
-    - `assoc.exist(idx)`：判断关联数组`assoc`中是否存在索引`idx`。
+  - `foreach(assoc[i]) begin ...`：使用`foreach`遍历关联数组中的所有值。
+  - `assoc.first(idx)`：得到关联数组的第一个索引值。
+  - `assoc.next(idx)`：得到关联数组的下一个索引值。
+  - `assoc.delete(idx)`：删除指定索引值的元素。
+  - `assoc.exist(idx)`：判断关联数组`assoc`中是否存在索引`idx`。
 
 ### 链表
 - SystemVerilog中提供了链表数据结构，但是应当尽量避免使用。使用队列会更加高效。
@@ -88,26 +88,26 @@ reg  [15:0]     array[16][8]; // SystemVerilog中多维定宽数组的定义方�
 ### 数组的方法
 - SystemVerilog中数组的方法可以适用于任何非合并数组，包括定宽数组、动态数组、队列和关联数组。
 - 数组缩减方法
-    - `array.sum`，将数组中所有的元素求和，并将结果保存在一个与array的元素同样位宽的变量中。
-    - `array.product`
-    - `array.and`
-    - `array.or`
-    - `array.xor`
-    - `$array[urandom_range(array.size()-1)]`：从数组中随机选出一个值。但是注意，对于关联数组，无法直接访问到第N个值，需要从第1个值开始遍历。
-        ```
-        // 从关联数组中取出随机的一个元素
-        int aa [int], rand_idx, element, count;
+  - `array.sum`，将数组中所有的元素求和，并将结果保存在一个与array的元素同样位宽的变量中。
+  - `array.product`
+  - `array.and`
+  - `array.or`
+  - `array.xor`
+  - `$array[urandom_range(array.size()-1)]`：从数组中随机选出一个值。但是注意，对于关联数组，无法直接访问到第N个值，需要从第1个值开始遍历。
+    ```
+    // 从关联数组中取出随机的一个元素
+    int aa [int], rand_idx, element, count;
 
-        element = $urandom_range(aa.size()-1);
-        foreach(aa[i])
-            if (count++ == element) begin
-                rand_idx = i;
-                break;
-            end
-        
-        int val = aa[rand_idx];
-        ```
+    element = $urandom_range(aa.size()-1);
+    foreach(aa[i])
+      if (count++ == element) begin
+        rand_idx = i;
+        break;
+      end
+    
+    int val = aa[rand_idx];
+    ```
 - 数组定位方法
-    - `array.min();`：返回包含数组`array`中最小元素的队列；
-    - `array.max();`：返回包含数组`array`中最大元素的队列；
-    - `array.unique();`：返回删去数组中重复元素（对于重复元素，只保留其中一个）之后的队列；
+  - `array.min();`：返回包含数组`array`中最小元素的队列；
+  - `array.max();`：返回包含数组`array`中最大元素的队列；
+  - `array.unique();`：返回删去数组中重复元素（对于重复元素，只保留其中一个）之后的队列；
