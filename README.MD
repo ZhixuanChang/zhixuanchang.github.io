@@ -27,6 +27,8 @@ aj@lkn.io | @ajlkn
 
 
 Credits:
+	Template:
+		HTML5 UP (html5up.net)
 
 	Demo Images:
 		Unsplash (unsplash.com)
