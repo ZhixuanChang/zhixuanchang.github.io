@@ -337,6 +337,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="快速入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建Git仓库
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -420,6 +435,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="快速入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建Git仓库
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -463,6 +493,12 @@
 
 <h1 id="git">Git学习笔记</h1>
 <h2 id="_1">快速入门</h2>
+<p>Git是一个分布式的版本控制系统，这意味着每一个终端上的仓库都是一个完整的仓库。一方面，分布式的设计提高了工程项目的安全性，即使一台终端上的数据丢失了，只需要重新检出其他终端上的仓库即可恢复全部的数据；另一方面，每一个终端上都需要保存全部的工程历史版本信息，增加了数据存储空间的需求。但是，Git使用的是增量式的存储方式，拥有极其优秀的空间压缩能力，即使管理一个较大的仓库，版本仓库的体积也可以控制在较小的水平上，在很大程度上弥补了分布式存储的不足。</p>
+<h3 id="git_1">创建Git仓库</h3>
+<p>在命令行工具（Windows操作系统中推荐使用powershell，也可以使用Git自带的Git bash工具）中将当前目录移动到工程根目录下，并执行下属指令：</p>
+<pre><code>git init
+</code></pre>
+<p>即可在当前目录下创建git仓库。此时目录下会出现一个<code>.git</code>文件夹，默认为隐藏的。</p>
 <h2 id="_2">进阶用法</h2>
 <h3 id="git-submodule">Git Submodule</h3>
 <p>用于将一个已经存在的Git仓库作为另一个Git仓库的子模块。</p>
