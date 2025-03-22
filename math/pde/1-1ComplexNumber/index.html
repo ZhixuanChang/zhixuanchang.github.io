@@ -565,34 +565,34 @@
 <blockquote>
 <p>对数集及其扩充的讨论有很多种理解方法。我们这里采用的是从集合论的角度，基于运算以及逆运算的封闭性的思路，从自然数集开始推广到复数集。</p>
 </blockquote>
-<p>人类对数的认识从自然数开始。0是一个特殊的数，从数论的角度来说，它不是自然数。但是从集合论的角度来说，0是自然数（自然数集合中需要一个0元素）。在自然数的基础上可以定义加法和乘法（在定义加法的时候，0这个数字非常重要，因为自然数中的任意一个元素和0的和仍然是自身）。并且加法和乘法对于自然数集合是封闭的，也即
-$$
+<p>人类对数的认识从自然数开始。0是一个特殊的数，从数论的角度来说，它不是自然数。但是从集合论的角度来说，0是自然数（自然数集合中需要一个0元素）。在自然数的基础上可以定义加法和乘法（在定义加法的时候，0这个数字非常重要，因为自然数中的任意一个元素和0的和仍然是自身）。并且加法和乘法对于自然数集合是封闭的，也即</p>
+<div class="arithmatex">\[
 \begin{aligned}
-&amp; \forall a, b\in \mathbb{N}, \
+&amp; \forall a, b\in \mathbb{N}, \\
 \text{s. t. }\quad &amp; a+b\in\mathbb{N},\quad a\cdot b \in \mathbb{N}
 \end{aligned}
-$$
-有了加法之后，一个很自然的需求是其逆运算，也即如果 <span class="arithmatex">\(a\)</span> 和某一个自然数的和是 <span class="arithmatex">\(s\)</span> ，该如何计算这个自然数？因此便有了减法的定义
-$$
+\]</div>
+<p>有了加法之后，一个很自然的需求是其逆运算，也即如果 <span class="arithmatex">\(a\)</span> 和某一个自然数的和是 <span class="arithmatex">\(s\)</span> ，该如何计算这个自然数？因此便有了减法的定义</p>
+<div class="arithmatex">\[
 b = s - a, \text{iff } a + b = s
-$$
-立刻可以发现，减法对自然数 <span class="arithmatex">\(\mathbb{N}\)</span> 不是封闭的。如果 <span class="arithmatex">\(a &lt; b\)</span> ，则不存在一个自然数 <span class="arithmatex">\(c\)</span> 使得 <span class="arithmatex">\(c = a - b\)</span>。因此，我们引入负数的概念，将自然数集扩充到整数 <span class="arithmatex">\(\mathbb{Z}\)</span> 。加法和减法运算对于整数来说都是封闭的。
-$$
+\]</div>
+<p>立刻可以发现，减法对自然数 <span class="arithmatex">\(\mathbb{N}\)</span> 不是封闭的。如果 <span class="arithmatex">\(a &lt; b\)</span> ，则不存在一个自然数 <span class="arithmatex">\(c\)</span> 使得 <span class="arithmatex">\(c = a - b\)</span>。因此，我们引入负数的概念，将自然数集扩充到整数 <span class="arithmatex">\(\mathbb{Z}\)</span> 。加法和减法运算对于整数来说都是封闭的。</p>
+<div class="arithmatex">\[
 \begin{aligned}
-&amp;\forall a, b\in \mathbb{Z}, \
+&amp;\forall a, b\in \mathbb{Z}, \\
 \text{s. t.}\quad&amp; a - b\in\mathbb{Z}
 \end{aligned}
-$$
-乘法的逆运算是除法，除法运算对于整数集是不封闭的。为了保证除法运算的封闭性，需要引入分数（也即有理数） <span class="arithmatex">\(\mathbb{Q}\)</span> 的概念。所谓有理数，可以写成两个整数的商的形式
-$$
+\]</div>
+<p>乘法的逆运算是除法，除法运算对于整数集是不封闭的。为了保证除法运算的封闭性，需要引入分数（也即有理数） <span class="arithmatex">\(\mathbb{Q}\)</span> 的概念。所谓有理数，可以写成两个整数的商的形式</p>
+<div class="arithmatex">\[
 a \in \mathbb{Q}, \text{ iff } \exists p, q \in\mathbb{Z}, \text{s. t. } a = \frac{p}{q}
-$$</p>
+\]</div>
 <p>另一方面，从乘法运算可以引出乘方运算（也即幂运算），幂运算对于有理数是封闭的。而其逆运算对于有理数是不封闭的，由此可以引入无理数的概念。无理数概念的建立牵扯出了人类的第一次数学危机。有理数和无理数的总和称为实数 <span class="arithmatex">\(\mathbb{R}\)</span> 。实数概念的建立非常重要，人类很快发现实数可以和数轴上的点一一对应。这是数形结合的一次重要落地。</p>
-<p>但是实数集上，开方运算仍然不是封闭的。负数没有偶数次根。为了解决开方运算的封闭性问题，虚数的概念逐渐建立起来
-$$
+<p>但是实数集上，开方运算仍然不是封闭的。负数没有偶数次根。为了解决开方运算的封闭性问题，虚数的概念逐渐建立起来</p>
+<div class="arithmatex">\[
 \imath = \sqrt{-1}
-$$
-借助虚数单位 <span class="arithmatex">\(\imath\)</span> 我们终于可以对任意的数做任意次开方运算了。实数和虚数共同构成了复数 <span class="arithmatex">\(\mathbb{C}\)</span> 。</p>
+\]</div>
+<p>借助虚数单位 <span class="arithmatex">\(\imath\)</span> 我们终于可以对任意的数做任意次开方运算了。实数和虚数共同构成了复数 <span class="arithmatex">\(\mathbb{C}\)</span> 。</p>
 <p>所谓虚数，其字面意思是虚无缥缈的数。与之相对的实数则是实际存在的数。但是，借用黎曼的一句话，当我们建立复数的概念之后，许多原本复杂繁琐的概念立刻变得优雅而清晰！</p>
 <hr />
 <p><strong>总结</strong></p>
