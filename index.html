@@ -20,7 +20,7 @@
     
     
       
-        <title>Zhixuan的笔记</title>
+        <title>Zhixuan的博客</title>
       
     
     
@@ -45,6 +45,8 @@
         <style>:root{--md-text-font:"Source Han Sans";--md-code-font:"Consolas"}</style>
       
     
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -84,7 +86,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Zhixuan的笔记" class="md-header__button md-logo" aria-label="Zhixuan的笔记" data-md-component="logo">
+    <a href="." title="Zhixuan的博客" class="md-header__button md-logo" aria-label="Zhixuan的博客" data-md-component="logo">
       
   <img src="assets/logo.png" alt="logo">
 
@@ -97,7 +99,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Zhixuan的笔记
+            Zhixuan的博客
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -268,12 +270,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Zhixuan的笔记" class="md-nav__button md-logo" aria-label="Zhixuan的笔记" data-md-component="logo">
+    <a href="." title="Zhixuan的博客" class="md-nav__button md-logo" aria-label="Zhixuan的博客" data-md-component="logo">
       
   <img src="assets/logo.png" alt="logo">
 
     </a>
-    Zhixuan的笔记
+    Zhixuan的博客
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -345,82 +347,13 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      声学
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      工程
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      开发工具
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      项目记录
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="项目记录">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      嵌入式开发类
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      软件开发类
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      结构设计类
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       关于笔记
     </span>
@@ -517,39 +450,43 @@
 <h3 id="_2">数学</h3>
 <ul>
 <li><a href="math/pde/pde/">数学物理方法</a></li>
-<li><a href="math/fourier_analysis/fourier_analysis/">Fourier分析</a></li>
-<li><a href="math/matrix/matrix/">矩阵理论</a></li>
-<li><a href="math/optimization/optimization/">优化理论</a></li>
-<li><a href="math/stochastic_process/stochastic_process/">随机过程</a></li>
-<li><a href="math/differential_geometry/differential_geometry/">微分几何</a></li>
 </ul>
-<h3 id="_3">声学</h3>
-<ul>
-<li><a href="acoustics/wave_equation/wave_equation/">波动方程</a></li>
-<li><a href="acoustics/fourier_acoustics/fourier_acoustics/">Fourier声学</a></li>
-<li><a href="acoustics/wavefield_sim/wavefield_sim/">声场仿真</a></li>
-</ul>
-<h3 id="_4">工程</h3>
-<ul>
-<li><a href="engineering/ultrasound/imaging/">超声成像</a></li>
-<li><a href="engineering/deep_learning/deep_learning/">深度学习</a></li>
-</ul>
-<h3 id="_5">开发工具</h3>
-<ul>
-<li><a href="tools/git/git-notes/">Git版本管理</a></li>
-<li><a href="tools/cuda/cuda/">CUDA程序设计</a></li>
-<li><a href="tools/make/make/">GNU make</a></li>
-<li><a href="tools/cmake/cmake/">GNU cmake</a></li>
-<li><a href="tools/vivado/vivado_design_suite/">Vivado Design Suite</a></li>
-</ul>
-<h2 id="_6">项目记录</h2>
-<h3 id="_7">嵌入式开发类</h3>
-<ul>
-<li><a href="projects/02_laser_daq_nn/laser_daq_nn/">基于Zynq 7020的激光测距传感器数据实时采集与处理</a></li>
-</ul>
-<h3 id="_8">软件开发类</h3>
-<h3 id="_9">结构设计类</h3>
-<h2 id="_10">关于笔记</h2>
+<!-- - [Fourier分析](./math/fourier_analysis/fourier_analysis.md)
+- [矩阵理论](./math/matrix/matrix.md)
+- [优化理论](./math/optimization/optimization.md)
+- [随机过程](./math/stochastic_process/stochastic_process.md)
+- [微分几何](./math/differential_geometry/differential_geometry.md)
+
+### 声学
+
+- [波动方程](./acoustics/wave_equation/wave_equation.md)
+- [Fourier声学](./acoustics/fourier_acoustics/fourier_acoustics.md)
+- [声场仿真](./acoustics/wavefield_sim/wavefield_sim.md)
+
+### 工程
+
+- [超声成像](./engineering/ultrasound/imaging.md)
+- [深度学习](./engineering/deep_learning/deep_learning.md)
+
+### 开发工具
+
+- [Git版本管理](./tools/git/git-notes.md)
+- [CUDA程序设计](./tools/cuda/cuda.md)
+- [GNU make](./tools/make/make.md)
+- [GNU cmake](./tools/cmake/cmake.md)
+- [Vivado Design Suite](./tools/vivado/vivado_design_suite.md)
+
+## 项目记录
+
+### 嵌入式开发类
+
+- [基于Zynq 7020的激光测距传感器数据实时采集与处理](./projects/02_laser_daq_nn/laser_daq_nn.md)
+
+### 软件开发类
+
+### 结构设计类 -->
+
+<h2 id="_3">关于笔记</h2>
 <p>本网站中的内容是笔者学习过程以及部分简单项目的记录，其中必然有不少的纰漏。如果您在阅读过程中发现了错误，或者对一些概念有不一样的理解，欢迎发邮件告诉我。我的邮箱：</p>
 <ul>
 <li>chang_zhixuan@qq.com</li>
@@ -636,9 +573,11 @@
     
       <script src="assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="javascripts/katex.js"></script>
       
-        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
   </body>
