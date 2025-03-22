@@ -41,6 +41,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://zhixuanchang.github.io/literature/WeekReview/</loc>
+         <lastmod>2025-03-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://zhixuanchang.github.io/math/differential_geometry/differential_geometry/</loc>
          <lastmod>2025-03-22</lastmod>
          <changefreq>daily</changefreq>
@@ -62,6 +67,11 @@
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/math/pde/1-1ComplexNumber/</loc>
+         <lastmod>2025-03-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/math/pde/1-2ComplexFunction/</loc>
          <lastmod>2025-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
