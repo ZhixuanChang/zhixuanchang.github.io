@@ -21,7 +21,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://zhixuanchang.github.io/acoustics/wave_equation/wave_equation/</loc>
+         <loc>https://zhixuanchang.github.io/acoustics/wavefield_sim/01kwave/</loc>
+         <lastmod>2025-03-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/acoustics/wavefield_sim/02field-ii/</loc>
+         <lastmod>2025-03-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/acoustics/wavefield_sim/03comsol/</loc>
          <lastmod>2025-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -46,52 +56,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://zhixuanchang.github.io/math/differential_geometry/differential_geometry/</loc>
+         <loc>https://zhixuanchang.github.io/math/pde/01ComplexNumber/</loc>
          <lastmod>2025-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://zhixuanchang.github.io/math/fourier_analysis/fourier_analysis/</loc>
-         <lastmod>2025-03-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhixuanchang.github.io/math/matrix/matrix/</loc>
-         <lastmod>2025-03-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhixuanchang.github.io/math/optimization/optimization/</loc>
-         <lastmod>2025-03-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhixuanchang.github.io/math/pde/1-1ComplexNumber/</loc>
-         <lastmod>2025-03-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhixuanchang.github.io/math/pde/1-2ComplexFunction/</loc>
+         <loc>https://zhixuanchang.github.io/math/pde/02ComplexFunction/</loc>
          <lastmod>2025-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/math/pde/pde/</loc>
-         <lastmod>2025-03-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhixuanchang.github.io/math/stochastic_process/stochastic_process/</loc>
-         <lastmod>2025-03-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhixuanchang.github.io/projects/01_rail_inspect_platform/rail_inspect_platform/</loc>
-         <lastmod>2025-03-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhixuanchang.github.io/projects/02_laser_daq_nn/laser_daq_nn/</loc>
          <lastmod>2025-03-22</lastmod>
          <changefreq>daily</changefreq>
     </url>

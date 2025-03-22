@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://zhixuanchang.github.io/acoustics/wave_equation/wave_equation/">
+        <link rel="canonical" href="https://zhixuanchang.github.io/acoustics/wavefield_sim/02field-ii/">
       
       
+        <link rel="prev" href="../01kwave/">
+      
+      
+        <link rel="next" href="../03comsol/">
       
       
       <link rel="icon" href="../../../images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Wave equation - Zhixuan的博客</title>
+        <title>Field II仿真 - Zhixuan的博客</title>
       
     
     
@@ -67,11 +71,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Wave equation
+              Field II仿真
             
           </span>
         </div>
@@ -214,10 +213,30 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../math/pde/1-1ComplexNumber/" class="md-tabs__link">
+        <a href="../../../math/pde/01ComplexNumber/" class="md-tabs__link">
           
   
   数学物理方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../wavefield_sim/" class="md-tabs__link">
+          
+  
+  声场仿真
 
         </a>
       </li>
@@ -411,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/pde/1-1ComplexNumber/" class="md-nav__link">
+      <a href="../../../math/pde/01ComplexNumber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -432,11 +451,153 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/pde/1-2ComplexFunction/" class="md-nav__link">
+      <a href="../../../math/pde/02ComplexFunction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     复变函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    声场仿真
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            声场仿真
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefield_sim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01kwave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    k-Wave仿真
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Field II仿真
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03comsol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    COMSOL声学仿真
   </span>
   
 
@@ -488,9 +649,9 @@
                   
 
 
-  <h1>Wave equation</h1>
+  <h1>Field II仿真</h1>
 
-<h2 id="_1">波动方程</h2>
+
 
 
 
@@ -521,6 +682,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01kwave/" class="md-footer__link md-footer__link--prev" aria-label="Previous: k-Wave仿真">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                k-Wave仿真
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03comsol/" class="md-footer__link md-footer__link--next" aria-label="Next: COMSOL声学仿真">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                COMSOL声学仿真
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
