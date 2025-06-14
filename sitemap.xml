@@ -76,12 +76,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://zhixuanchang.github.io/programming/c_cpp/01_C_basics/</loc>
+         <lastmod>2025-06-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://zhixuanchang.github.io/programming/cmake/cmake/</loc>
          <lastmod>2025-06-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://zhixuanchang.github.io/programming/cuda/cuda/</loc>
+         <loc>https://zhixuanchang.github.io/programming/cuda/01_build_env/</loc>
          <lastmod>2025-06-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
