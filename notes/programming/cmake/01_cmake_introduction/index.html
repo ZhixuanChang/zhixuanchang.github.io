@@ -203,7 +203,7 @@
         <a href="../../../../literature/WeekReview03/" class="md-tabs__link">
           
   
-  文献总结
+  文献周报
 
         </a>
       </li>
@@ -346,7 +346,7 @@
             
   
   <span class="md-ellipsis">
-    文献总结
+    文献周报
   </span>
   
 
@@ -356,7 +356,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            文献总结
+            文献周报
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -371,7 +371,7 @@
         
   
   <span class="md-ellipsis">
-    文献阅读周报03
+    文献周报25.06.1
   </span>
   
 
@@ -392,7 +392,7 @@
         
   
   <span class="md-ellipsis">
-    文献阅读周报02
+    文献周报25.04.1
   </span>
   
 
@@ -413,7 +413,7 @@
         
   
   <span class="md-ellipsis">
-    文献阅读周报01
+    文献周报25.03.1
   </span>
   
 
@@ -603,6 +603,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cmake_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake是什么
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       发展
@@ -612,7 +621,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cmake_1" class="md-nav__link">
+  <a href="#cmake_2" class="md-nav__link">
     <span class="md-ellipsis">
       CMake相关资源
     </span>
@@ -683,6 +692,10 @@
 <h1 id="cmake">CMake简介</h1>
 <h2 id="_1">起源</h2>
 <p>CMake是一个相对年轻的项目，于2000年为了解决美国国家医学图书馆出资的Visible Human Project项目下的Insight Segmentation and Registration Toolkit（ITK）软件的跨平台建构的需求而被创造出来。Kitware公司由于其VTK（Visualization Toolkit）的成功得到了这项任务，并且一直维护CMake至今。</p>
+<h2 id="cmake_1">CMake是什么</h2>
+<p>CMake并不是一个编译器（根据源代码生成特定平台上的可执行文件的软件），也不是一个构建器（按照既定的指令调用编译器对源代码进行处理从而得到可执行文件的软件），而是一个更高层面的项目管理工具。</p>
+<p><img alt="" src="../images/01_cmake_intro_1.svg" /></p>
+<p>换言之，仅仅使用CMake和编译器无法完成程序的编译，还需要一个构建器（builder）。早期的CMake通常使用GNU make作为构建器，但是只能应用于Linux中。在Windows下需要使用MSVC的构建器。2011年Google推出Ninja构建器之后，由于其速度更快，逐渐成为了新的选择。并且在Windows和Linux下都可以使用。</p>
 <h2 id="_2">发展</h2>
 <ul>
 <li>2002年，CMake在ITK项目中取得了成功，Kitware顺势把VTK的构建也迁移到了CMake并延续至今。</li>
@@ -698,7 +711,7 @@
 <li>2022年，Bryce Adelstein Lelbach在他的C++Now conference研讨会中将CMake称为“C++标准构建系统”。</li>
 <li>2023年，CMake主导了编译器描述C++20模块依赖信息的标准格式，产生了p1689规范。目前p1689规范已经被Visual Studio、Clang、和GCC三大编译器实施，并且被CMake用于支持C++20 module的构建。</li>
 </ul>
-<h2 id="cmake_1">CMake相关资源</h2>
+<h2 id="cmake_2">CMake相关资源</h2>
 <p>最重要的资源当然是CMake的Documentation，可以说浩如烟海，并且关联到具体的CMake版本。</p>
 <p>其次还有大量的CMake相关著作：</p>
 <ul>
