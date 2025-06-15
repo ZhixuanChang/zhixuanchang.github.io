@@ -96,6 +96,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://zhixuanchang.github.io/notes/programming/cuda/02_cuda_helloworld/</loc>
+         <lastmod>2025-06-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://zhixuanchang.github.io/notes/programming/git/git-notes/</loc>
          <lastmod>2025-06-15</lastmod>
          <changefreq>daily</changefreq>
