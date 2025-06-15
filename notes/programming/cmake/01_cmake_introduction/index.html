@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://zhixuanchang.github.io/notes/programming/cmake/cmake/">
+        <link rel="canonical" href="https://zhixuanchang.github.io/notes/programming/cmake/01_cmake_introduction/">
       
       
+        <link rel="prev" href="../../cuda/01_build_env/">
+      
+      
+        <link rel="next" href="../../../../contact/">
       
       
       <link rel="icon" href="../../../../images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Cmake - Zhixuan的博客</title>
+        <title>CMake简介 - Zhixuan的博客</title>
       
     
     
@@ -67,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#cmake" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -96,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cmake
+              CMake简介
             
           </span>
         </div>
@@ -213,6 +222,26 @@
           
   
   CUDA
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  CMake
 
         </a>
       </li>
@@ -473,6 +502,153 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    CMake
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CMake
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CMake简介
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CMake简介
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      起源
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      发展
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake相关资源
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考资料
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -504,9 +680,35 @@
                   
 
 
-  <h1>Cmake</h1>
-
-
+<h1 id="cmake">CMake简介</h1>
+<h2 id="_1">起源</h2>
+<p>CMake是一个相对年轻的项目，于2000年为了解决美国国家医学图书馆出资的Visible Human Project项目下的Insight Segmentation and Registration Toolkit（ITK）软件的跨平台建构的需求而被创造出来。Kitware公司由于其VTK（Visualization Toolkit）的成功得到了这项任务，并且一直维护CMake至今。</p>
+<h2 id="_2">发展</h2>
+<ul>
+<li>2002年，CMake在ITK项目中取得了成功，Kitware顺势把VTK的构建也迁移到了CMake并延续至今。</li>
+<li>2003年，Ken Martin和Bill Hoffman编写了<a href="https://github.com/Akagi201/learning-cmake/tree/master/docs">《掌握CMake：一个跨平台构建系统》</a>。一个成功的软件，仅仅性能强大还不够，还需要足够优秀的文档系统，让开发者能顺利使用。</li>
+<li>2004年，CMake获得了国家医学影像计算联盟 (NA-MIC) 提供的大量开发资金。</li>
+<li>2006年，KDE转向了CMake。</li>
+<li>2008年，CMake首次被应用于LLVM编译器。</li>
+<li>2011年，CMake提供了ninja支持。</li>
+<li>2016年，LLVM抛弃了autoconf，转向了CMake。</li>
+<li>2017年，Microsoft Visual Studio首次提供了针对CMake的支持。</li>
+<li>2019年，Qt转向了CMake。</li>
+<li>2020年，Microsoft Visual Studio增加了对CMake Presets的支持；CMake增加了对Ninja Multi config的支持；C++20的特性也开始得到了支持。</li>
+<li>2022年，Bryce Adelstein Lelbach在他的C++Now conference研讨会中将CMake称为“C++标准构建系统”。</li>
+<li>2023年，CMake主导了编译器描述C++20模块依赖信息的标准格式，产生了p1689规范。目前p1689规范已经被Visual Studio、Clang、和GCC三大编译器实施，并且被CMake用于支持C++20 module的构建。</li>
+</ul>
+<h2 id="cmake_1">CMake相关资源</h2>
+<p>最重要的资源当然是CMake的Documentation，可以说浩如烟海，并且关联到具体的CMake版本。</p>
+<p>其次还有大量的CMake相关著作：</p>
+<ul>
+<li>2003年，Ken Martin和Bill Hoffman编写了<a href="https://github.com/Akagi201/learning-cmake/tree/master/docs">《掌握CMake：一个跨平台构建系统》</a>。</li>
+<li>2012年，Stephen Kelly编写了《Modern CMake》。</li>
+<li>2018年，Craig Scott编写了《CMake进阶：实践指南》。</li>
+</ul>
+<h2 id="_3">参考资料</h2>
+<p>[1] <a href="https://cmake.org/history/">CMake历史</a>\
+[2] <a href="https://zh.wikipedia.org/wiki/CMake">CMake-Wiki</a></p>
 
 
 
@@ -537,6 +739,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../cuda/01_build_env/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 开发环境的搭建">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                开发环境的搭建
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../../contact/" class="md-footer__link md-footer__link--next" aria-label="Next: 联系我">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                联系我
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
