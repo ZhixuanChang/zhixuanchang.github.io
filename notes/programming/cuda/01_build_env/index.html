@@ -22,7 +22,7 @@
     
     
       
-        <title>开发环境的搭建 - Zhixuan的博客</title>
+        <title>开发环境的搭建 - 立于🌕之侧，不弱✨之势</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Zhixuan的博客" class="md-header__button md-logo" aria-label="Zhixuan的博客" data-md-component="logo">
+    <a href="../../../.." title="立于🌕之侧，不弱✨之势" class="md-header__button md-logo" aria-label="立于🌕之侧，不弱✨之势" data-md-component="logo">
       
   <img src="../../../../assets/logo.png" alt="logo">
 
@@ -99,7 +99,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Zhixuan的博客
+            立于🌕之侧，不弱✨之势
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -290,12 +290,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Zhixuan的博客" class="md-nav__button md-logo" aria-label="Zhixuan的博客" data-md-component="logo">
+    <a href="../../../.." title="立于🌕之侧，不弱✨之势" class="md-nav__button md-logo" aria-label="立于🌕之侧，不弱✨之势" data-md-component="logo">
       
   <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
-    Zhixuan的博客
+    立于🌕之侧，不弱✨之势
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -583,6 +583,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="编辑器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clion" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -777,12 +801,18 @@ target_link_libraries(${TARGET_NAME} PRIVATE
 <p>关键语句是设置<code>CMAKE_CUDA_ARCHITECTURE</code>和<code>CMAKE_CUDA_COMPILER</code>这两个变量，以及在<code>project</code>语句中使用<code>LANGUAGES</code>关键字声明项目语言为<code>CUDA</code>。当然可以指定多种项目语言，包括<code>C</code>和<code>CXX</code>，实现混合编程。在<code>add_executable</code>语句之后，需要指定需要链接的动态库，常用的链接库可以参考</p>
 <p>接下来，就可以按照常规使用CMake的方法来管理工程了。</p>
 <h2 id="_4">编辑器</h2>
-<p>VS Code，伟大，无需多言。</p>
-<blockquote>
-<p>在VS Code中要实现对CUDA C++语法的全面支持，需要安装一个插件Nsight Visual Studio Code Edition。</p>
-</blockquote>
+<h3 id="vs-code">VS Code</h3>
+<p>目前NVIDIA官方提供了比较强支持的编辑器应当就是VS Code了。一方面开发了Nsight Visual Studio Code Edition插件，另一方面CUDA C++语法也得到了比较全面的支持。再加上VS Code对CMake的支持也非常好，因此非常适合CUDA开发。</p>
 <p><img alt="alt text" src="../assets/01_build_env/image-3.png" /></p>
+<p>安装插件之后只需要按照正常CMake工程进行使用即可（需要安装CMake Tools和C++开发插件包）。</p>
 <p>最近AI辅助编程可以说是风生水起，Cursor、Lingma IDE等基于VS Code的编辑器得到了极大的关注，应当也可以正常使用。只是对插件的支持还不完整。</p>
+<h3 id="clion">CLion</h3>
+<p>CLion是一个非常流行的IDE，提供了非常强大的工程管理和调试功能。JetBrains官方对CUDA C++的支持，使用起来非常舒服。</p>
+<p>如果是在Windows操作系统开发，CLion默认使用的编译器是MinGW，无法实现CUDA代码的编译，需要手动增加Visual Studio编译工具链。</p>
+<p><img alt="alt text" src="../assets/01_build_env/image-10.png" /></p>
+<p>如上图所示，在工具链中选择新增Visual Studio并指定Visual Studio的安装路径即可。如果安装了多个不同版本的VS工具链，可以进一步指定详细的路径。</p>
+<p><img alt="alt text" src="../assets/01_build_env/image-11.png" /></p>
+<p>然后在CMake配置中选择使用相应的工具链即可。剩下的同样是按照正常CMake工程进行开发即可。</p>
 <h2 id="_5">参考资料</h2>
 <p>[1] <a href="https://developer.nvidia.com/zh-cn/blog/building-cuda-applications-cmake/">使用 CMake 构建跨平台 CUDA 应用程序</a></p>
 
