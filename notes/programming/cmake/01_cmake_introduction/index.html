@@ -736,9 +736,9 @@
 <p>CMake是一个相对年轻的项目，于2000年为了解决美国国家医学图书馆出资的Visible Human Project项目下的Insight Segmentation and Registration Toolkit（ITK）软件的跨平台建构的需求而被创造出来。Kitware公司由于其VTK（Visualization Toolkit）的成功得到了这项任务，并且一直维护CMake至今。</p>
 <h2 id="cmake_1">CMake是什么</h2>
 <p>CMake并不是一个编译器（根据源代码生成特定平台上的可执行文件的软件），也不是一个构建器（按照既定的指令调用编译器对源代码进行处理从而得到可执行文件的软件），而是一个更高层面的项目管理工具。</p>
-<p><center><img src="images/01_cmake_intro_1.svg"></img></center></p>
-<!-- ![](images/01_cmake_intro_1.svg) -->
+<!-- <center><img src="../images/01_cmake_intro_1.svg"></img></center> -->
 
+<p><img alt="" src="../images/01_cmake_intro_1.svg" /></p>
 <p>换言之，仅仅使用CMake和编译器无法完成程序的编译，还需要一个构建器（builder）。早期的CMake通常使用GNU make作为构建器，但是只能应用于Linux中。在Windows下需要使用MSVC的构建器。2011年Google推出Ninja构建器之后，由于其速度更快，逐渐成为了新的选择。并且在Windows和Linux下都可以使用。</p>
 <h3 id="c">C语言的构建过程</h3>
 <p>为了说明CMake在C语言程序开发中所起的作用，这里先用一点篇幅简要介绍一下C语言从源代码到可执行文件过程中都发生了什么事情。</p>
