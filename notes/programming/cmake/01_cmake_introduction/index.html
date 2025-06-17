@@ -622,9 +622,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#makeninja" class="md-nav__link">
+  <a href="#make" class="md-nav__link">
     <span class="md-ellipsis">
-      Make/Ninja工具的出现
+      Make工具的出现
     </span>
   </a>
   
@@ -634,15 +634,6 @@
   <a href="#cmakec" class="md-nav__link">
     <span class="md-ellipsis">
       CMake在C语言编译中所起的作用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cmake_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      现代CMake
     </span>
   </a>
   
@@ -663,7 +654,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cmake_3" class="md-nav__link">
+  <a href="#cmake_2" class="md-nav__link">
     <span class="md-ellipsis">
       CMake相关资源
     </span>
@@ -750,7 +741,7 @@
 <li>链接</li>
 </ul>
 <p>其中编译过程又可以分为<em>预处理</em>和<em>编译</em>两个过程。所谓的预处理，会将全部的include语句和define语句展开。之后通过编译将C语言中的程序语句转换为汇编语句，并按照用户输入的参数进行优化。通常我们将从源代码文件、库文件（其他项目已经编译好的库文件，在当前项目中不进行开发和维护而直接使用）到可执行文件的过程称为<em>构建</em>（在现代IDE中通常被称为build）。</p>
-<p>对于一个最简单的HelloWorld程序，如下所示</p>
+<p>对于一个最简单的HelloWorld程序，如下所示。</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main()
@@ -760,21 +751,206 @@ int main()
     return 0;
 }
 </code></pre>
-<p>在构建的过程中</p>
-<h3 id="makeninja">Make/Ninja工具的出现</h3>
-<p>为了避免手动编写复杂的编译指令，并且减少不必要的编译过程浪费时间，一些初级的自动化管理工具被创造了出来。</p>
+<p>msvc编译器的时候比较复杂，不如gcc直观，因此下面的编译和运行都使用Ubuntu下的gcc完成。</p>
+<p>在终端中使用gcc构建，即可得到可执行文件。并且不需要链接标准库以外的其他库，也不需要包含标准头文件之外的其他头文件，因此实际上不需要做上面五件事情中的后三件事情，只要指定生成目标文件所需要的源代码文件即可。</p>
+<pre><code class="language-shell">gcc main.c -o hello
+</code></pre>
+<p>由于只有一个源代码，并且没有包含标准头文件之外的头文件，也没有链接标准库之外的库文件，因此只需要指定要编译的源代码即可。</p>
+<p>为了模拟一个更加普适的开发场景，将输出Hello信息的代码封装为一个库，并单独编译打包成一个静态库文件，再从主函数中调用这个库。</p>
+<pre><code class="language-c">// main.c
+#include &quot;hello.h&quot;
+
+int main()
+{
+    const char* name = &quot;CMake&quot;;
+    say_hello(name);
+
+    return 0;
+}
+
+// hello.h
+#ifndef HELLO_H_
+#define HELLO_H_
+
+#include &lt;stdio.h&gt;
+
+void say_hello(const char* name);
+
+#endif
+
+// hello.c
+#include &quot;hello.h&quot;
+
+void say_hello(const char* name)
+{
+    printf(&quot;Hello, %s!\n&quot;, name);
+}
+</code></pre>
+<p>目录中的文件结构如下所示。<code>hello</code>作为一个库，其源代码被放在一个单独的目录中，目录里包括一个头文件目录和一个源代码文件目录。为了目录结构更加清晰，将库代码和头文件放在单独的一个目录中，此时这个简单的小项目中的目录结果如下所示。</p>
+<pre><code>.
+├── hello
+│   ├── inc
+│   │   └── hello.h
+│   └── src
+│       └── hello.c
+└── main.c
+</code></pre>
+<p>首先使用<code>gcc</code>编译<code>hello</code>这个库</p>
+<pre><code class="language-shell">cd hello
+gcc -c src/hello.c -Iinc
+ar rcs lib/libhello.a hello.o
+</code></pre>
+<p><code>gcc -c</code>的作用是只编译不汇编和链接，得到一个目标文件<code>hello.o</code>，然后使用静态库打包指令<code>ar</code>得到可链接的静态库文件<code>libhello.a</code>。注意Linux下的静态链接库通常以<code>.a</code>作为拓展名，并且以<code>lib</code>开始，<code>lib</code>和<code>.a</code>之间的字符串才是静态库的名称。</p>
+<p>得到静态库文件之后，可以对<code>main.c</code>进行编译和链接，最终得到可执行文件</p>
+<pre><code class="language-shell">cd ..
+gcc -o run_hello main.c -Ihello/inc -Lhello/lib -lhello
+</code></pre>
+<p>这里使用了<code>gcc</code>的多条参数：</p>
+<ul>
+<li><code>-I</code>用于指定包含路径，路径以当前所在的路径为起点，紧跟着<code>-I</code>中间没有空格。</li>
+<li><code>-L</code>用于指定链接路径。</li>
+<li><code>-l</code>用于指定要链接的静态库的名称，这里<code>-lhello</code>参数会让编译器在标准库目录和前面<code>-L</code>参数指定的目录下寻找<code>libhello.a</code>这个文件，<code>lib</code>这个前缀和<code>.a</code>这个后缀编译器会自动加上。</li>
+</ul>
+<p>最终函数的输出是<code>run_hello</code>这个可执行文件，执行之后的结果为</p>
+<pre><code class="language-shell">Hello, CMake!
+</code></pre>
+<h3 id="make">Make工具的出现</h3>
+<p>如果一个项目中包含多个不同的库，那么修改了其中部分库之后，就必须重新编译和链接所有依赖这些库的库和可执行文件。当项目复杂起来之后，程序员需要付出大量的时间和精力来维护库与库之间的依赖关系。而<code>make</code>这样的构建工具的出现，极大减少了程序员的工作量。</p>
+<p>仍然使用上面的例子，目前项目中包含这样一些文件，一个<code>hello</code>库和一个主函数源代码<code>main.c</code>。</p>
+<pre><code class="language-shell">.
+├── hello
+│   ├── build
+│   │   └── hello.o
+│   ├── inc
+│   │   └── hello.h
+│   ├── lib
+│   └── src
+│       └── hello.c
+└── main.c
+</code></pre>
+<p>可以编写这样一个Makefile文件</p>
+<pre><code class="language-make">.PHONY: clean all
+
+all: libhello.a main.c hello/inc/hello.h
+    @mkdir -p build
+    gcc -o build/run_hello main.c -Ihello/inc -Lhello/lib -lhello
+
+libhello.a: hello/src/hello.c hello/inc/hello.h
+    @mkdir -p hello/build
+    gcc -c hello/src/hello.c -Ihello/inc -o hello/build/hello.o
+    ar rcs hello/lib/libhello.a hello/build/hello.o
+
+clean:
+    rm -rf build &amp; rm hello/lib/libhello.a &amp; rm -rf hello/build
+</code></pre>
+<p>需要注意Makefile文件中指令前面必须是制表符，不能是空格。Makefile实现了两个重要的功能：</p>
+<ul>
+<li>将复杂的指令简化为简单的指令。比如在命令行中执行<code>make</code>指令，GNU make就会在当前路径下搜索Makefile文件，并按照Makefile文件中定义好的指令执行，不在需要用户输入长长的编译指令。</li>
+<li>实现了不同目标文件之间相互依赖关系的自动化管理。比如上面的Makefile文件中，指定了<code>all</code>目标（当然这是一个伪目标，实际产生的文件是<code>build/run_hello</code>）依赖于<code>libhello.a</code>这个文件。那么当make接收到用户的指令要生成<code>all</code>目标时，如果发现<code>libhello.a</code>的依赖文件相比上一次构建的时候已经产生了新的变化，就会重新编译<code>libhello.a</code>。</li>
+</ul>
+<p>但是，编写Makefile的过程非常繁琐。有程序员用“吃💩”一样来形容这个维护的过程。</p>
 <h3 id="cmakec">CMake在C语言编译中所起的作用</h3>
-<p>C语言开发过程中开发者必须的操作包括：</p>
+<p>正如<code>gcc</code>指令所使用的一些参数那样，C语言开发过程中开发者必须的操作包括：</p>
 <ul>
 <li>指定需要编译的源代码文件：生成目标文件（库或者可执行文件）都需要编译哪些源代码。</li>
 <li>指定包含路径：否则编译器无法找到用户自己编写的头文件。</li>
 <li>指定链接路径：否则链接器找不到需要链接的库文件。</li>
 <li>指定需要链接的库：否则链接器找不到外部函数的定义。</li>
 </ul>
-<p>但是在使用Make/Ninja进行工程管理时，开发者除了上面这些工作之外还需要解决不同库之间的依赖问题，给程序开发带来了巨大的工作量。因此，在Make/Ninja的基础上，CMake开始发挥作用。</p>
-<p>使用CMake的情况下，开发者实际上和gcc等编译器脱钩了，不需要再去掌握gcc的编译指令就可以开发出一个可用的程序，并且对程序进行相应的维护和后续开发。</p>
-<h3 id="cmake_2">现代CMake</h3>
-<p>CMake在开发的过程中，各方面的特性在不断被改进，越来越适应更复杂项目的开发需求。</p>
+<p>如果使用CMake来管理一个工程，这几个过程会变得更加显式。</p>
+<p>仍然使用上面的工程目录结构，这次不需要手动编写Makefile，而是需要编写CMake的工程文件CMakeLists.txt</p>
+<pre><code class="language-shell">.
+├── CMakeLists.txt
+├── hello
+│   ├── inc
+│   │   └── hello.h
+│   ├── lib
+│   └── src
+│       └── hello.c
+└── main.c
+</code></pre>
+<p>CMakeLists.txt文件中的内容如下</p>
+<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.21)
+
+project(Hello VERSION 0.1 LANGUAGES C)
+
+add_library(hello STATIC
+    hello/src/hello.c
+    )
+target_include_directories(hello PUBLIC
+    hello/inc
+    )
+
+add_executable(run_hello main.c)
+target_link_libraries(run_hello PRIVATE
+    hello
+    )
+</code></pre>
+<p>其中前面两行<code>cmake_minimum_required</code>和<code>project</code>这两个语句是一个工程的固定格式，用于指定CMake的最低版本要求和工程的名称，暂时不去深究。</p>
+<p><code>add_library</code>用于指定生成一个链接库，<code>hello</code>是库的名称，<code>STATIC</code>指定库的类型是静态链接库，<code>hello/src/hello/c</code>指定了生成库所需要的源代码文件，这里只包含一个源代码文件。<code>hello.c</code>中包含了<code>hello.h</code>这个头文件，不在系统头文件目录中，因此需要手动指定，这个过程通过<code>target_include_libraries</code>语句实现。语句中需要首先指定目标的名称（<code>hello</code>），然后指定包含的类型<code>PUBLIC</code>，意味着每一个依赖<code>hello</code>库的目标都会自动添加上下面的包含路径，<code>hello/inc</code>是要添加的包含路径。</p>
+<p>接下来的<code>add_executable</code>用于指定生成一个可执行文件，<code>run_hello</code>是可执行文件的名称，<code>main.c</code>是所需要的源代码文件，可以有多个源代码文件。<code>main.c</code>中使用了<code>hello</code>库中的函数，因此需要链接到<code>hello</code>库，这个过程通过<code>target_link_libraries</code>语句实现。由于之前已经指定了<code>hello</code>库的包含路径是<code>PUBLIC</code>类型，因此指定<code>run_hello</code>目标链接到<code>hello</code>之后，<code>run_hello</code>目标的包含路径中会自动添加<code>hello</code>的全部包含路径。</p>
+<p>接下来只需要执行<code>cmake .</code>即可，其中<code>.</code>是<code>cmake</code>指令的参数，用于指定CMakeLists.txt文件相对当前路径所在的路径。如果直接在根目录下执行就直接指定当前路径作为参数即可。但是CMake会生成大量的中间文件，为了和工程源代码文件隔离，通常会在根目录下建立一个<code>build</code>目录用于保存CMake生成的中间文件。</p>
+<pre><code class="language-shell">mkdir build
+cd build
+cmake ..
+</code></pre>
+<p>在<code>build</code>路径内部，由于CMakeLists.txt文件在上一级目录中，因此需要使用<code>..</code>作为参数。</p>
+<p>执行完成之后，CMake没有生成库文件和可执行程序，而是生成了一个makefile文件。如下所示。这也正是为什么说CMake不是一个构建器，而是一个工程管理工具。</p>
+<pre><code class="language-shell">.
+├── CMakeLists.txt
+├── build
+│   ├── CMakeCache.txt
+│   ├── CMakeFiles
+│   │   ├── 3.22.1
+│   │   │   ├── CMakeCCompiler.cmake
+│   │   │   ├── CMakeDetermineCompilerABI_C.bin
+│   │   │   ├── CMakeSystem.cmake
+│   │   │   └── CompilerIdC
+│   │   │       ├── CMakeCCompilerId.c
+│   │   │       ├── a.out
+│   │   │       └── tmp
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   ├── CMakeOutput.log
+│   │   ├── CMakeTmp
+│   │   ├── Makefile.cmake
+│   │   ├── Makefile2
+│   │   ├── TargetDirectories.txt
+│   │   ├── cmake.check_cache
+│   │   ├── hello.dir
+│   │   │   ├── DependInfo.cmake
+│   │   │   ├── build.make
+│   │   │   ├── cmake_clean.cmake
+│   │   │   ├── cmake_clean_target.cmake
+│   │   │   ├── compiler_depend.make
+│   │   │   ├── compiler_depend.ts
+│   │   │   ├── depend.make
+│   │   │   ├── flags.make
+│   │   │   ├── hello
+│   │   │   │   └── src
+│   │   │   ├── link.txt
+│   │   │   └── progress.make
+│   │   ├── progress.marks
+│   │   └── run_hello.dir
+│   │       ├── DependInfo.cmake
+│   │       ├── build.make
+│   │       ├── cmake_clean.cmake
+│   │       ├── compiler_depend.make
+│   │       ├── compiler_depend.ts
+│   │       ├── depend.make
+│   │       ├── flags.make
+│   │       ├── link.txt
+│   │       └── progress.make
+│   ├── Makefile
+│   └── cmake_install.cmake
+├── hello
+│   ├── inc
+│   │   └── hello.h
+│   ├── lib
+│   └── src
+│       └── hello.c
+└── main.c
+</code></pre>
+<p>接下来在<code>build</code>目录下执行<code>make</code>指令，即可得到库文件libhello.a和可执行程序run_hello。</p>
 <h2 id="_2">发展</h2>
 <ul>
 <li>2002年，CMake在ITK项目中取得了成功，Kitware顺势把VTK的构建也迁移到了CMake并延续至今。</li>
@@ -790,7 +966,8 @@ int main()
 <li>2022年，Bryce Adelstein Lelbach在他的C++Now conference研讨会中将CMake称为“C++标准构建系统”。</li>
 <li>2023年，CMake主导了编译器描述C++20模块依赖信息的标准格式，产生了p1689规范。目前p1689规范已经被Visual Studio、Clang、和GCC三大编译器实施，并且被CMake用于支持C++20 module的构建。</li>
 </ul>
-<h2 id="cmake_3">CMake相关资源</h2>
+<p>可以注意到，越来越多的大型项目开始转向CMake作为项目管理工具，包括著名的OpenCV、Qt等大型的项目。充分证明了CMake的应用潜力。是入门C/C++开发非常值得学习的一项技能。</p>
+<h2 id="cmake_2">CMake相关资源</h2>
 <p>最重要的资源当然是CMake的<a href="https://cmake.org/documentation/">Documentation</a>，可以说浩如烟海，并且关联到具体的CMake版本。</p>
 <p>其次还有大量的CMake相关著作：</p>
 <ul>

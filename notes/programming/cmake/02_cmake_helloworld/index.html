@@ -596,6 +596,47 @@
 
 
 <h1 id="cmakehelloworld">使用CMake管理HelloWorld工程</h1>
+<h2 id="helloworld">从HelloWorld开始</h2>
+<p>按照惯例，本文从Hello World程序开始讲起。</p>
+<p>正如前文所说，开发一个C/C++工程，程序员需要做下面几件事：</p>
+<ul>
+<li>编写源代码文件；</li>
+<li>指定生成特定目标所需要的源代码文件；</li>
+<li>指定包含路径；</li>
+<li>指定链接路径；</li>
+<li>指定特定目标所需要链接的库。</li>
+</ul>
+<p>Hello World程序的源代码非常简单，只需要下面这么几行。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    printf(&quot;hello, world!\n&quot;);
+
+    return 0;
+}
+</code></pre>
+<p>首先进入hello目录下，构建<code>hello</code>这个库，得到一个静态链接库<code>libhello.a</code>，保存在lib目录下</p>
+<pre><code class="language-shell">gcc -c hello.c -Iinc
+</code></pre>
+<p>注意，在<code>hello.c</code>中包含了<code>hello.h</code>头文件，因此需要使用<code>gcc</code>的<code>-I</code>指令指定头文件的保存路径。</p>
+<p>然后在生成主程序可执行文件的时候，需要指定包含头文件的目录，以及链接库文件的目录，并指定需要链接的库<code>hello</code>。</p>
+<pre><code class="language-shell">gcc -o run_hello main.c -Ihello/inc -Lhello/lib -lhello
+</code></pre>
+<h2 id="cmakehelloworld_1">使用CMake实现HelloWorld程序的构建</h2>
+<p>当使用CMake进行项目开发时，除了编写源代码文件以外的四件事都需要在CMakeLists.txt文件中完成。</p>
+<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.21)
+
+project(HelloCMake VERSION 0.1 LANGUAGES C)
+
+set(TARGET_NAME hello)
+
+add_executable(${TARGET_NAME} main.c)
+target_include_directories(${TARGET_NAME} PRIVATE
+    ${PROJECT_SOURCE_DIR}/inc
+)
+</code></pre>
+<h2 id="_1">参考资料</h2>
 
 
 
