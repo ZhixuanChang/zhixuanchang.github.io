@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://zhixuanchang.github.io/notes/programming/cmake/02_cmake_helloworld/">
+        <link rel="canonical" href="https://zhixuanchang.github.io/notes/programming/cmake/02_cmake_advances/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>使用CMake管理HelloWorld工程 - 立于🌕之侧，不弱✨之势</title>
+        <title>CMake相比于Make的先进性 - 立于🌕之侧，不弱✨之势</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cmakehelloworld" class="md-skip">
+        <a href="#cmakemake" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              使用CMake管理HelloWorld工程
+              CMake相比于Make的先进性
             
           </span>
         </div>
@@ -236,6 +236,24 @@
           
   
   CMake
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../svn/01_svn_intro/" class="md-tabs__link">
+          
+  
+  SVN
 
         </a>
       </li>
@@ -566,6 +584,74 @@
   
   
   
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SVN
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            SVN
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../svn/01_svn_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SVN简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../../contact/" class="md-nav__link">
         
@@ -595,48 +681,54 @@
                   
 
 
-<h1 id="cmakehelloworld">使用CMake管理HelloWorld工程</h1>
-<h2 id="helloworld">从HelloWorld开始</h2>
-<p>按照惯例，本文从Hello World程序开始讲起。</p>
-<p>正如前文所说，开发一个C/C++工程，程序员需要做下面几件事：</p>
-<ul>
-<li>编写源代码文件；</li>
-<li>指定生成特定目标所需要的源代码文件；</li>
-<li>指定包含路径；</li>
-<li>指定链接路径；</li>
-<li>指定特定目标所需要链接的库。</li>
-</ul>
-<p>Hello World程序的源代码非常简单，只需要下面这么几行。</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<h1 id="cmakemake">CMake相比于Make的先进性</h1>
+<h2 id="_1">引言</h2>
+<p>上一篇文章中，我们对这样一个工程进行了构建。</p>
+<pre><code class="language-shell">.
+├── CMakeLists.txt
+├── hello
+│   ├── inc
+│   │   └── hello.h
+│   ├── lib
+│   └── src
+│       └── hello.c
+└── main.c
+</code></pre>
+<p>Make管理方式</p>
+<pre><code class="language-make">.PHONY: clean all
 
-int main()
-{
-    printf(&quot;hello, world!\n&quot;);
+all: libhello.a main.c hello/inc/hello.h
+    @mkdir -p build
+    gcc -o build/run_hello main.c -Ihello/inc -Lhello/lib -lhello
 
-    return 0;
-}
+libhello.a: hello/src/hello.c hello/inc/hello.h
+    @mkdir -p hello/build
+    gcc -c hello/src/hello.c -Ihello/inc -o hello/build/hello.o
+    ar rcs hello/lib/libhello.a hello/build/hello.o
+
+clean:
+    rm -rf build &amp; rm hello/lib/libhello.a &amp; rm -rf hello/build
 </code></pre>
-<p>首先进入hello目录下，构建<code>hello</code>这个库，得到一个静态链接库<code>libhello.a</code>，保存在lib目录下</p>
-<pre><code class="language-shell">gcc -c hello.c -Iinc
-</code></pre>
-<p>注意，在<code>hello.c</code>中包含了<code>hello.h</code>头文件，因此需要使用<code>gcc</code>的<code>-I</code>指令指定头文件的保存路径。</p>
-<p>然后在生成主程序可执行文件的时候，需要指定包含头文件的目录，以及链接库文件的目录，并指定需要链接的库<code>hello</code>。</p>
-<pre><code class="language-shell">gcc -o run_hello main.c -Ihello/inc -Lhello/lib -lhello
-</code></pre>
-<h2 id="cmakehelloworld_1">使用CMake实现HelloWorld程序的构建</h2>
-<p>当使用CMake进行项目开发时，除了编写源代码文件以外的四件事都需要在CMakeLists.txt文件中完成。</p>
+<p>CMake管理方式</p>
 <pre><code class="language-cmake">cmake_minimum_required(VERSION 3.21)
 
-project(HelloCMake VERSION 0.1 LANGUAGES C)
+project(Hello VERSION 0.1 LANGUAGES C)
 
-set(TARGET_NAME hello)
+add_library(hello STATIC
+    hello/src/hello.c
+    )
+target_include_directories(hello PUBLIC
+    hello/inc
+    )
 
-add_executable(${TARGET_NAME} main.c)
-target_include_directories(${TARGET_NAME} PRIVATE
-    ${PROJECT_SOURCE_DIR}/inc
-)
+add_executable(run_hello main.c)
+target_link_libraries(run_hello PRIVATE
+    hello
+    )
 </code></pre>
-<h2 id="_1">参考资料</h2>
+<p>二者看起来似乎只是语法上有所区别，从Make到CMake，代码量也并没有明显的减少。那么是什么驱动大型项目使用CMake开发而非Make呢？</p>
+<h2 id="_2">工程的模块化管理</h2>
+<h2 id="_3">参考资料</h2>
 
 
 
