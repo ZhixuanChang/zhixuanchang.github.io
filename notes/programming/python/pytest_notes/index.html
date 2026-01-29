@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://zhixuanchang.github.io/notes/programming/cmake/02_cmake_advances/">
+        <link rel="canonical" href="https://zhixuanchang.github.io/notes/programming/python/pytest_notes/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>CMake构建过程与模块化管理 - 立于皓月之侧，不弱星光之势</title>
+        <title>PyTest：Python代码的自动化测试 - 立于皓月之侧，不弱星光之势</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cmake" class="md-skip">
+        <a href="#pytestpython" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CMake构建过程与模块化管理
+              PyTest：Python代码的自动化测试
             
           </span>
         </div>
@@ -292,7 +292,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../01_cmake_introduction/" class="md-tabs__link">
+        <a href="../../cmake/01_cmake_introduction/" class="md-tabs__link">
           
   
   
@@ -780,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01_cmake_introduction/" class="md-nav__link">
+      <a href="../../cmake/01_cmake_introduction/" class="md-nav__link">
         
   
   
@@ -947,157 +947,18 @@
 
 
 
-<h1 id="cmake">CMake构建过程与模块化管理</h1>
-<h2 id="_1">本文概要</h2>
-<ul>
-<li>CMake项目（project）：一个包含CMakeLists.txt的目录，CMakeLists.txt中至少生成一个目标库或者目标可执行文件。</li>
-<li>CMake模块化设计：<code>add_subdirectory</code></li>
-<li>CMake项目的移植：复制源代码目录，并在移植后的上层项目CMakeLists.txt中添加<code>add_subdirectory</code>指令。</li>
-</ul>
-<h2 id="_2">引言</h2>
-<p>上一篇文章中，我们对这样一个工程进行了构建。</p>
-<div class="highlight"><pre><span></span><code>ex02.1
-├──<span class="w"> </span>CMakeLists.txt
-├──<span class="w"> </span>hello
-│<span class="w">   </span>├──<span class="w"> </span>inc
-│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>hello.h
-│<span class="w">   </span>├──<span class="w"> </span>lib
-│<span class="w">   </span>└──<span class="w"> </span>src
-│<span class="w">       </span>└──<span class="w"> </span>hello.c
-└──<span class="w"> </span>main.c
-</code></pre></div>
-<p>在使用CMake管理和构建这个项目的时候，需要在<code>ex02.1</code>路径下创建一个CMakeLists.txt文件，并在文件中添加下面的语句。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.21</span><span class="p">)</span>
-
-<span class="nb">project</span><span class="p">(</span><span class="s">Hello</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">0.1</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">C</span><span class="p">)</span>
-
-<span class="nb">add_library</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">STATIC</span>
-<span class="w">    </span><span class="s">hello/src/hello.c</span>
-<span class="p">)</span>
-<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">PUBLIC</span>
-<span class="w">    </span><span class="s">hello/inc</span>
-<span class="p">)</span>
-
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">run_hello</span><span class="w"> </span><span class="s">main.c</span><span class="p">)</span>
-<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">run_hello</span><span class="w"> </span><span class="s">PRIVATE</span>
-<span class="w">    </span><span class="s">hello</span>
-<span class="p">)</span>
-</code></pre></div>
-<p>构建的时候，只需要在<code>ex02.1/build</code>路径下执行<code>cmake .. &amp; make</code>即可。<code>cmake ..</code>指令会在<code>ex02.1/build</code>路径下生成<code>makefile</code>文件，<code>make</code>指令则会启动编译、汇编和链接，生成最终的库文件和可执行程序。</p>
-<p>本文我们来对这个工程进行进一步的优化，将<code>hello</code>这个库做成更适合移植的形式。但是在这之前，会先对CMake中的“项目”这个概念进行说明。</p>
-<h2 id="cmake_1">CMake项目</h2>
-<h3 id="cmake_2">CMake项目的基本构建过程</h3>
-<p>CMake项目是一个包含若干CMakeLists.txt的目录，有以下特定：</p>
-<ul>
-<li>同一个目录中最多只能有一个CMakeLists.txt</li>
-<li>作为顶层工程的CMakeLists.txt文件中必须包含<code>cmake_minimum_required</code>指令和<code>project</code>指令，其他CMakeLists.txt文件中需要包含<code>project</code></li>
-</ul>
-<p>在构建的过程中，需要指定一个目录作为顶层目录，这个顶层目录下必须包含一个CMakeLists.txt，作为项目的顶层CMakeLists.txt。</p>
-<p>CMake在构建的过程中会产生大量的中间文件，为了和项目的源代码文件隔离开，通常会在顶层工程目录下创建一个build目录，作为CMake的构建目录。</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>build
-<span class="nb">cd</span><span class="w"> </span>build
-cmake<span class="w"> </span>..
-make
-</code></pre></div>
-<p>这里把<code>..</code>作为CMake的输入参数。CMake构建的过程中，实际上是按照CMakeLists.txt文件逐行执行的过程。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.21</span><span class="p">)</span>
-</code></pre></div>
-<p><code>cmake_minimum_required</code>通常是CMake工程执行的第一条语句，此时CMake会检查当前版本是否满足这一指令的要求，如果低于要求的版本，则会产生报错信息并退出构建过程。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">project</span><span class="p">(</span><span class="s">Hello</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">0.1</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">C</span><span class="p">)</span>
-</code></pre></div>
-<p><code>project</code>语句指定当前项目的名称和使用的编程语言。CMake支持的编程语言有：</p>
-<ul>
-<li>C，支持的标准包括C90、C99、C11、C17</li>
-<li>CXX，支持的标准包括C++98、C++11、C++14、C++17、C++20、C++23</li>
-<li>Fortran，支持GNU、Interl、PGI等标准</li>
-<li>CUDA，自CMake 3.8起开始支持</li>
-<li>ASM，会变 语言，支持NASM、GAS</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nb">add_library</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">STATIC</span>
-<span class="w">    </span><span class="s">hello/src/hello.c</span>
-<span class="p">)</span>
-</code></pre></div>
-<p><code>add_library</code>用于指定生成一个链接库，基本语法为
-<div class="highlight"><pre><span></span><code><span class="nb">add_library</span><span class="p">(</span><span class="s">&lt;target_name&gt;</span><span class="w"> </span><span class="s">[STATIC</span><span class="w"> </span><span class="s">|</span><span class="w"> </span><span class="s">SHARED</span><span class="w"> </span><span class="s">|</span><span class="w"> </span><span class="s">MODULE]</span><span class="w"> </span><span class="s">[EXCLUDE_FROM_ALL]</span>
-<span class="w">    </span><span class="s">[source1</span><span class="w"> </span><span class="s">source2</span><span class="w"> </span><span class="s">...]</span>
-<span class="p">)</span>
-</code></pre></div></p>
-<p>运行完成之后会在<code>build</code>目录下生成一个Makefile文件。然后使用make启动项目的编译。</p>
-<h2 id="cmake_3">CMake模块化设计</h2>
-<p>CMake提供了强大的工程模块化管理的能力，笔者认为这大概也是大型项目更偏爱CMake的原因。</p>
-<p>在我们的<code>hello</code>工程中，设计了一个静态库<code>hello</code>用于实现在终端打印信息的功能。如果希望将其迁移到一个新的工程中使用，最直接的做法是将源代码文件夹复制到新的工程目录下，然后在新工程的CMakeLists.txt文件中添加<code>add_library</code>语句。</p>
-<p>对于一个简单的模块，这样的做法似乎没有什么不妥。但是简单的模块本身迁移的价值也并不高。真正有价值的是功能强大而复杂的模块。而复杂模块的构建语句相应也会更加复杂，开发者需要小心分辨需要在新项目中添加哪些语句，给开发带来了阻碍。因此，修改CMakeLists.txt的方法显然不能让人满意。</p>
-<p>（大概）是为了方便工程的模块化管理，CMake提供了<code>add_subdirectory</code>指令。如下所示，我们可以在<code>ex02.1/hello</code>路径下创建一个新的CMakeLists.txt文件。</p>
-<div class="highlight"><pre><span></span><code>.
-├──<span class="w"> </span>CMakeLists.txt
-├──<span class="w"> </span>hello
-│<span class="w">   </span>├──<span class="w"> </span>CMakeLists.txt
-│<span class="w">   </span>├──<span class="w"> </span>inc
-│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>hello.h
-│<span class="w">   </span>└──<span class="w"> </span>src
-│<span class="w">       </span>└──<span class="w"> </span>hello.c
-└──<span class="w"> </span>main.c
-</code></pre></div>
-<p><code>ex02.1/hello/CMakeLists.txt</code>文件中的内容如下</p>
-<div class="highlight"><pre><span></span><code><span class="c"># hello/CMakeLists.txt</span>
-<span class="nb">project</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">0.1</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">C</span><span class="p">)</span>
-
-<span class="nb">add_library</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">STATIC</span>
-<span class="w">    </span><span class="o">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="o">}</span><span class="s">/src/hello.c</span>
-<span class="p">)</span>
-<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">PUBLIC</span>
-<span class="w">    </span><span class="o">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="o">}</span><span class="s">/inc</span>
-<span class="p">)</span>
-</code></pre></div>
-<p>然后将<code>/ex02.1/CMakeLists.txt</code>中的内容修改为</p>
-<div class="highlight"><pre><span></span><code><span class="c"># CMakeLists.txt</span>
-<span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.21</span><span class="p">)</span>
-
-<span class="nb">project</span><span class="p">(</span><span class="s">run_hello</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">0.1</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">C</span><span class="p">)</span>
-
-<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">hello</span><span class="p">)</span>
-
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">run_hello</span><span class="w"> </span><span class="s">main.c</span><span class="p">)</span>
-<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">run_hello</span><span class="w"> </span><span class="s">PRIVATE</span>
-<span class="w">    </span><span class="s">hello</span>
-<span class="p">)</span>
-</code></pre></div>
-<p>其中主要的变动为构建<code>hello</code>静态库的语句被移除，取而代之的是<code>add_subdirectory</code>语句。我们暂时不去深究构建的过程中都会发生什么事情，现在如果需要移植<code>hello</code>这个模块到一个新的工程，只需要将<code>hello</code>这个目录复制到新的工程目录下，并且在新工程中的CMakeLists.txt文件中加入上面的这样一条<code>add_subdirectory</code>语句即可。</p>
-<p>这样，我们就真正实现了<code>hello</code>这个库的“模块化”管理。所谓的模块化，笔者认为可以理解为在开发者不需要关心模块具体实现的情况下可以使用这个库。</p>
-<h2 id="cmake_4">CMake的完整构建过程</h2>
-<p>在一个由CMake管理的工程中，允许存在多个CMakeLists.txt文件，但是同一个目录下只能有一个CMakeLists.txt文件。包含CMakeLists.txt文件的目录称为一个“项目”。一个工程通常包括一个顶层项目和下属的若干个子项目，从而形成了CMake的模块化和层次化管理体系。</p>
-<div class="highlight"><pre><span></span><code>.
-├──<span class="w"> </span>CMakeLists.txt
-├──<span class="w"> </span>arith
-│<span class="w">   </span>├──<span class="w"> </span>CMakeLists.txt
-│<span class="w">   </span>├──<span class="w"> </span>inc
-│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>complex_ops.h
-│<span class="w">   </span>└──<span class="w"> </span>src
-│<span class="w">       </span>└──<span class="w"> </span>complex_ops.c
-├──<span class="w"> </span>hello
-│<span class="w">   </span>├──<span class="w"> </span>CMakeLists.txt
-│<span class="w">   </span>├──<span class="w"> </span>inc
-│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>hello.h
-│<span class="w">   </span>└──<span class="w"> </span>src
-│<span class="w">       </span>└──<span class="w"> </span>hello.c
-├──<span class="w"> </span>main.c
-└──<span class="w"> </span>sort
-<span class="w">    </span>├──<span class="w"> </span>CMakeLists.txt
-<span class="w">    </span>├──<span class="w"> </span>inc
-<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>my_sort.h
-<span class="w">    </span>└──<span class="w"> </span>src
-<span class="w">        </span>└──<span class="w"> </span>my_sort.c
-</code></pre></div>
-<p>如上所示的工程中，一共包含<code>arith</code>、<code>hello</code>、<code>sort</code>三个子项目。</p>
-<p>每一个CMakeLists.txt中都必须包含一个<code>project</code>语句（并且只能包含一条<code>project</code>语句）。顶层的CMakeLists.txt中还需要包含一个<code>cmake_minimum_required</code>语句，子项目则不需要。</p>
-<!-- 可以看到，工程根目录下的CMakeLists.txt中的内容和之前相比，关于`hello`库生成的指令被一个`add_subdirectory`语句取代了。假设整个项目被放置在`/home/zhixuan/projects/learn_cmake/ex02.1`这一路径下。构建项目的时候，在工程根目录下创建一个`build`目录，并且在目录中执行`cmake ..`。此时`..`会被shell解析为工程的根目录`/home/zhixuan/projects/learn_cmake/ex02.1`。CMake在这个目录下找到了run_hello CMakeLists.txt。CMake构建并生成makefile的过程，会逐行处理run_hello CMakeLists.txt文件中的指令。当执行到run_hello CMakeLists.txt中的`add_subdirectory`指令时，会进入所指定的文件夹中寻找CMakeLists.txt -->
-
-<h3 id="cmakeliststxt">CMakeLists.txt文件的单步调试</h3>
-<p>目前已经有部分IDE（比如JetBrains的CLion）支持CMakeLists.txt文件的单步调试，极大方便了工程管理遇到问题时的调试。</p>
-<h2 id="cmake_5">特殊的CMake项目</h2>
-<h3 id="_3">只包含头文件的项目</h3>
-<h2 id="_4">参考资料</h2>
-<p>[1] <a href="https://cmake.org/cmake/help/v3.31/command/add_subdirectory.html">CMake add_subdirectory command</a></p>
+<h1 id="pytestpython">PyTest：Python代码的自动化测试</h1>
+<h2 id="pytest">PyTest简介</h2>
+<p>PyTest是一个用于测试的开源框架，它基于Python语言，具有以下特点：</p>
+<ol>
+<li>测试用例的编写和运行：支持简单、灵活的测试用例定义方式。</li>
+<li>测试用例的参数化：允许使用不同的输入数据多次运行同一个测试用例。</li>
+<li>测试用例的依赖管理：支持测试用例之间的依赖关系管理。</li>
+<li>测试结果报告：生成详细的测试运行结果报告。</li>
+<li>测试结果监控：可以对测试执行过程进行监控。</li>
+<li>测试结果可视化：提供可视化的测试结果展示。</li>
+<li>测试数据存储：支持测试运行结果的数据存储功能。</li>
+</ol>
 
 
 

@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -13,19 +13,22 @@
       
       
       
+        
+      
+      
       <link rel="icon" href="../../../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>CUDA: Hello World - 立于🌕之侧，不弱✨之势</title>
+        <title>CUDA: Hello World - 立于皓月之侧，不弱星光之势</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -39,8 +42,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Microsoft+Yahei:300,300i,400,400i,700,700i%7CConsolas:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Microsoft Yahei";--md-code-font:"Consolas"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"Noto Sans Mono"}</style>
       
     
     
@@ -50,16 +53,17 @@
 
     
     
-    
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -69,7 +73,7 @@
       
         
         <a href="#cuda-hello-world" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -81,8 +85,8 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="立于🌕之侧，不弱✨之势" class="md-header__button md-logo" aria-label="立于🌕之侧，不弱✨之势" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="立于皓月之侧，不弱星光之势" class="md-header__button md-logo" aria-label="立于皓月之侧，不弱星光之势" data-md-component="logo">
       
   <img src="../../../../assets/logo.png" alt="logo">
 
@@ -95,7 +99,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            立于🌕之侧，不弱✨之势
+            立于皓月之侧，不弱星光之势
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -109,33 +113,61 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
     
     
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -148,7 +180,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -156,6 +188,7 @@
     </div>
   </div>
 </div>
+      
     
     
   </nav>
@@ -168,7 +201,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -176,9 +209,11 @@
   
   
   
+  
     <li class="md-tabs__item">
       <a href="../../../.." class="md-tabs__link">
         
+  
   
     
   
@@ -193,11 +228,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../../../literature/WeekReview03/" class="md-tabs__link">
           
+  
   
   文献周报
 
@@ -211,11 +248,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../01_build_env/" class="md-tabs__link">
           
+  
   
   CUDA
 
@@ -229,11 +268,33 @@
   
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../matlab/mex/" class="md-tabs__link">
+          
+  
+  
+  MATLAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     
     
       <li class="md-tabs__item">
         <a href="../../cmake/01_cmake_introduction/" class="md-tabs__link">
           
+  
   
   CMake
 
@@ -247,11 +308,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../svn/01_svn_intro/" class="md-tabs__link">
           
+  
   
   SVN
 
@@ -265,9 +328,11 @@
   
   
   
+  
     <li class="md-tabs__item">
       <a href="../../../../contact/" class="md-tabs__link">
         
+  
   
     
   
@@ -300,14 +365,14 @@
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="立于🌕之侧，不弱✨之势" class="md-nav__button md-logo" aria-label="立于🌕之侧，不弱✨之势" data-md-component="logo">
+    <a href="../../../.." title="立于皓月之侧，不弱星光之势" class="md-nav__button md-logo" aria-label="立于皓月之侧，不弱星光之势" data-md-component="logo">
       
   <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
-    立于🌕之侧，不弱✨之势
+    立于皓月之侧，不弱星光之势
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -322,9 +387,16 @@
       <a href="../../../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     首页
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -338,6 +410,7 @@
   
   
   
+    
     
     
     
@@ -357,9 +430,16 @@
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -368,7 +448,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            文献周报
+            
+  
+    文献周报
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -382,9 +466,16 @@
       <a href="../../../../literature/WeekReview03/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报25.06.1
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -403,9 +494,16 @@
       <a href="../../../../literature/WeekReview02/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报25.04.1
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -424,9 +522,16 @@
       <a href="../../../../literature/WeekReview01/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报25.03.1
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -448,6 +553,7 @@
   
   
   
+    
     
     
     
@@ -467,9 +573,16 @@
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     CUDA
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -478,7 +591,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            CUDA
+            
+  
+    CUDA
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -492,9 +609,16 @@
       <a href="../01_build_env/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     开发环境的搭建
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -516,6 +640,7 @@
   
   
   
+    
     
     
     
@@ -535,9 +660,16 @@
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
-    CMake
+    
+  
+    MATLAB
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -546,7 +678,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            CMake
+            
+  
+    MATLAB
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -557,12 +693,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cmake/01_cmake_introduction/" class="md-nav__link">
+      <a href="../../matlab/mex/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    CMake简介
+    
+  
+    MATLAB-C/C++混合编程
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -587,6 +730,7 @@
     
     
     
+    
       
       
     
@@ -603,9 +747,16 @@
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
-    SVN
+    
+  
+    CMake
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -614,7 +765,98 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            SVN
+            
+  
+    CMake
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cmake/01_cmake_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMake简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVN
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SVN
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -628,9 +870,16 @@
       <a href="../../svn/01_svn_intro/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     SVN简介
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -656,9 +905,16 @@
       <a href="../../../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     联系我
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -676,9 +932,19 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
               <article class="md-content__inner md-typeset">
                 
                   
+
 
 
 <h1 id="cuda-hello-world">CUDA: Hello World</h1>
@@ -692,34 +958,34 @@
 <p>而在GPU编程模型下，我们安排100位👨‍🍳来处理🥔。首先计算每一位👨‍🍳需要处理的🥔数量：<code>N/100</code>。我们暂且先不考虑不能整除的情形。假设一位👨‍🍳处理一个🥔的时间仍然是<code>t</code>，那么实际需要的时间就是<code>N*t/100</code>。</p>
 <p>举例来说，现在我们需要对一个包含<code>N</code>个元素的矩阵<code>A</code>进行处理，计算每个元素的平方，并将其保存到矩阵<code>B</code>中对应的位置上。矩阵<code>A</code>和<code>B</code>具有相同的规模。</p>
 <p>对于传统CPU计算模型来说，CPU依次对各个元素进行处理。</p>
-<pre><code class="language-c">void mat_sqrt(float* A, float* B, int N)
-{
-    for (int i = 0; i &lt; N; ++i)
-    {
-        B[i] = sqrt(A[i]);
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">mat_sqrt</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>而CUDA的做法是，同时启动<code>k</code>个线程，每一个线程都有一个唯一的编号。每个线程首先根据自己的编号计算得到一个地址<code>ind</code>，再按照地址<code>ind</code>找到自己需要处理的数据，处理完成之后将结果保存在对应的位置上。这里的关键点是每一个线程如何得到<code>ind</code>。要知道，如果数据的索引计算错误，导致每一个线程操作的是同一个数据，那么一方面计算将会是无效的（和只使用一个线程计算没有区别），另外还会造成写数据冲突（所有线程往同一个位置写数据）。</p>
 <p>计算对应的数据这项操作是通过CUDA的一组内置变量<code>blockIdx</code>和<code>threadIdx</code>实现的。在介绍这两个变量之前，需要先介绍CUDA设备端代码的计算网格的划分。</p>
 <!-- TODO: 上次写到了这里 -->
 <p>所谓的“计算网格”（grids）是CUDA组织大量线程的架构。
 每一个线程所需要执行的程序通过核函数来编写，如下所示。</p>
-<pre><code class="language-c">__global__ void mat_sqrt_kernel(float* A, float* B, int N)
-{
-    int ind = blockIdx.x * blockDim.x + threadIdx.x;
-    B[ind] = sqrtf(A[ind]);
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">mat_sqrt_kernel</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">B</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrtf</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">ind</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>回到🥔削皮切丝的例子上。厨房为了节省成本，请100位👨‍🍳的时候，开出的人均工资要更低一些。因此👨‍🍳们处理一个🥔的时间也相应增加到了<code>1.15*t</code>。</p>
 <p>另外，🥔统一保存在仓库里，仓库的门一次只能让两位👨‍🍳通过。因此取🥔的时间也会相应增加，属于额外的时间开销。</p>
 <p>上面的代码描述了CUDA中的每一个线程所需要执行的指令。其中<code>blockIdx</code>和<code>threadIdx</code>都是<code>dim3</code>类型的变量，共同构成了一个线程的编号。</p>
-<pre><code class="language-c">typedef struct {
-    unsigned x;
-    unsigned y;
-    unsigned z;
-} dim3;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">dim3</span><span class="p">;</span>
+</code></pre></div>
 <p><code>__global__</code>是一个修饰符，属于CUDA C++语法中的关键字，表示这个函数<code>mat_sqrt_kernel</code>是一个在GPU中执行的函数，并且可以从主机端或者设备端被调用。</p>
 <h2 id="cuda-hello-world_1">CUDA Hello World程序设计</h2>
 <p>CUDA是一个纯面向计算的设备，因此没有终端打印的功能（因为同时有上千个线程在运行，如果每个线程都向终端输出一条信息，终端一次就会显示上千条信息！）。所以，本文所演示的“Hello World”程序是一个矩阵Hadamard乘积代码。</p>
@@ -729,14 +995,14 @@
 <p>CUDA中支持使用简单的算术运算符进行运算，包括<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>。但是C标准库<code>math.h</code>中的运算函数在设备端无法调用。要实现复杂的算术运算，比如取平方根，取对数等等，需要调用CUDA工具链中的数学运算函数。具体可以参考<a href="https://docs.nvidia.com/cuda/archive/12.4.1/cuda-math-api/index.html">CUDA Math API Reference Manual</a>。</p>
 <h3 id="_2">代码实现</h3>
 <p>核函数设计</p>
-<pre><code class="language-c">
-</code></pre>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 <p>主机调用函数设计</p>
-<pre><code class="language-c">
-</code></pre>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 <p>主程序设计</p>
-<pre><code class="language-c">
-</code></pre>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 
 
 
@@ -760,7 +1026,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -791,10 +1057,13 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.path", "toc.integrate", "toc.follow", "navigation.top", "navigation.footer", "navigation.expand", "search.highlight", "search.share", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.path", "toc.integrate", "toc.follow", "navigation.top", "navigation.footer", "navigation.expand", "search.highlight", "search.share", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../../javascripts/mathjax.js"></script>
       

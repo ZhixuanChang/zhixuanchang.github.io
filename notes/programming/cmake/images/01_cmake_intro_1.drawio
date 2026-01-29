@@ -1,41 +1,44 @@
-<mxfile host="Electron" modified="2025-06-15T13:40:39.079Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.4 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="Q2-YHgqGqVo3ySkD72t_" version="24.6.4" type="device">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
   <diagram name="第 1 页" id="4-6h6n2CsJTyew6XhxzD">
-    <mxGraphModel dx="710" dy="121" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+    <mxGraphModel dx="1186" dy="482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-1" value="CMake" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="240" y="640" width="400" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="CMake" vertex="1">
+          <mxGeometry height="40" width="400" x="240" y="640" as="geometry" />
         </mxCell>
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-2" value="GNU make" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="240" y="700" width="120" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="GNU make" vertex="1">
+          <mxGeometry height="40" width="90" x="240" y="700" as="geometry" />
         </mxCell>
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-3" value="Ninja" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="380" y="700" width="120" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="Ninja" vertex="1">
+          <mxGeometry height="40" width="90" x="343" y="700" as="geometry" />
         </mxCell>
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-4" value="..." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="520" y="700" width="120" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="..." vertex="1">
+          <mxGeometry height="40" width="90" x="550" y="700" as="geometry" />
         </mxCell>
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-5" value="GCC" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="240" y="760" width="90" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="GCC" vertex="1">
+          <mxGeometry height="40" width="90" x="240" y="760" as="geometry" />
         </mxCell>
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-6" value="MSVC" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="343" y="760" width="90" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="MSVC" vertex="1">
+          <mxGeometry height="40" width="90" x="343" y="760" as="geometry" />
         </mxCell>
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-7" value="Clang" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="447" y="760" width="90" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="Clang" vertex="1">
+          <mxGeometry height="40" width="90" x="447" y="760" as="geometry" />
         </mxCell>
-        <mxCell id="71fWri5zcQ2ZWEL2r1w1-8" value="..." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="550" y="760" width="90" height="40" as="geometry" />
+        <mxCell id="71fWri5zcQ2ZWEL2r1w1-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="..." vertex="1">
+          <mxGeometry height="40" width="90" x="550" y="760" as="geometry" />
         </mxCell>
-        <mxCell id="JTGITvYWnboV6v1wDaqq-1" value="项目管理" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#FFE6CC;" vertex="1" parent="1">
-          <mxGeometry x="140" y="640" width="83" height="40" as="geometry" />
+        <mxCell id="JTGITvYWnboV6v1wDaqq-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=light-dark(#FFE6CC,#994C00);fontColor=light-dark(#000000,#FFFFFF);" value="项目管理器" vertex="1">
+          <mxGeometry height="40" width="83" x="140" y="640" as="geometry" />
         </mxCell>
-        <mxCell id="JTGITvYWnboV6v1wDaqq-2" value="构建器" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#E5CCFF;" vertex="1" parent="1">
-          <mxGeometry x="140" y="700" width="83" height="40" as="geometry" />
+        <mxCell id="JTGITvYWnboV6v1wDaqq-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=light-dark(#E5CCFF,#4C0099);fontColor=light-dark(#000000,#FFFFFF);" value="构建器" vertex="1">
+          <mxGeometry height="40" width="83" x="140" y="700" as="geometry" />
         </mxCell>
-        <mxCell id="JTGITvYWnboV6v1wDaqq-3" value="编辑器" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#CCE5FF;" vertex="1" parent="1">
-          <mxGeometry x="140" y="760" width="83" height="40" as="geometry" />
+        <mxCell id="JTGITvYWnboV6v1wDaqq-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=light-dark(#CCE5FF,#004C99);fontColor=light-dark(#000000,#FFFFFF);" value="编译器" vertex="1">
+          <mxGeometry height="40" width="83" x="140" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="OY49hs1UbAf31G-HN2Ac-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#CCCCCC,#CCCCCC);fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);" value="msbuild" vertex="1">
+          <mxGeometry height="40" width="90" x="447" y="700" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

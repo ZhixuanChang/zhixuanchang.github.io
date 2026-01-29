@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -11,25 +11,28 @@
         <link rel="canonical" href="https://zhixuanchang.github.io/notes/programming/cmake/01_cmake_introduction/">
       
       
-        <link rel="prev" href="../../cuda/01_build_env/">
+        <link rel="prev" href="../../matlab/mex/">
       
       
         <link rel="next" href="../../svn/01_svn_intro/">
       
       
+        
+      
+      
       <link rel="icon" href="../../../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>CMake简介 - 立于🌕之侧，不弱✨之势</title>
+        <title>CMake简介 - 立于皓月之侧，不弱星光之势</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -43,8 +46,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Microsoft+Yahei:300,300i,400,400i,700,700i%7CConsolas:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Microsoft Yahei";--md-code-font:"Consolas"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"Noto Sans Mono"}</style>
       
     
     
@@ -54,16 +57,17 @@
 
     
     
-    
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -73,7 +77,7 @@
       
         
         <a href="#cmake" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -85,8 +89,8 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="立于🌕之侧，不弱✨之势" class="md-header__button md-logo" aria-label="立于🌕之侧，不弱✨之势" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="立于皓月之侧，不弱星光之势" class="md-header__button md-logo" aria-label="立于皓月之侧，不弱星光之势" data-md-component="logo">
       
   <img src="../../../../assets/logo.png" alt="logo">
 
@@ -99,7 +103,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            立于🌕之侧，不弱✨之势
+            立于皓月之侧，不弱星光之势
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -113,33 +117,61 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
     
     
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -152,7 +184,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -160,6 +192,7 @@
     </div>
   </div>
 </div>
+      
     
     
   </nav>
@@ -172,7 +205,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -180,9 +213,11 @@
   
   
   
+  
     <li class="md-tabs__item">
       <a href="../../../.." class="md-tabs__link">
         
+  
   
     
   
@@ -197,11 +232,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../../../literature/WeekReview03/" class="md-tabs__link">
           
+  
   
   文献周报
 
@@ -215,11 +252,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../cuda/01_build_env/" class="md-tabs__link">
           
+  
   
   CUDA
 
@@ -232,6 +271,27 @@
         
   
   
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../matlab/mex/" class="md-tabs__link">
+          
+  
+  
+  MATLAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -240,6 +300,7 @@
       <li class="md-tabs__item md-tabs__item--active">
         <a href="./" class="md-tabs__link">
           
+  
   
   CMake
 
@@ -253,11 +314,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../svn/01_svn_intro/" class="md-tabs__link">
           
+  
   
   SVN
 
@@ -271,9 +334,11 @@
   
   
   
+  
     <li class="md-tabs__item">
       <a href="../../../../contact/" class="md-tabs__link">
         
+  
   
     
   
@@ -306,14 +371,14 @@
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="立于🌕之侧，不弱✨之势" class="md-nav__button md-logo" aria-label="立于🌕之侧，不弱✨之势" data-md-component="logo">
+    <a href="../../../.." title="立于皓月之侧，不弱星光之势" class="md-nav__button md-logo" aria-label="立于皓月之侧，不弱星光之势" data-md-component="logo">
       
   <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
-    立于🌕之侧，不弱✨之势
+    立于皓月之侧，不弱星光之势
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -328,9 +393,16 @@
       <a href="../../../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     首页
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -344,6 +416,7 @@
   
   
   
+    
     
     
     
@@ -363,9 +436,16 @@
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -374,7 +454,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            文献周报
+            
+  
+    文献周报
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -388,9 +472,16 @@
       <a href="../../../../literature/WeekReview03/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报25.06.1
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -409,9 +500,16 @@
       <a href="../../../../literature/WeekReview02/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报25.04.1
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -430,9 +528,16 @@
       <a href="../../../../literature/WeekReview01/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     文献周报25.03.1
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -454,6 +559,7 @@
   
   
   
+    
     
     
     
@@ -473,9 +579,16 @@
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     CUDA
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -484,7 +597,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            CUDA
+            
+  
+    CUDA
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -498,9 +615,103 @@
       <a href="../../cuda/01_build_env/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     开发环境的搭建
+  
+
+    
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MATLAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MATLAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../matlab/mex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MATLAB-C/C++混合编程
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -527,6 +738,7 @@
     
     
     
+    
       
         
         
@@ -538,24 +750,35 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     CMake
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            CMake
+            
+  
+    CMake
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -578,9 +801,16 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
+    
+  
     CMake简介
+  
+
+    
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -589,16 +819,23 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     CMake简介
+  
+
+    
   </span>
+  
   
 
       </a>
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -607,14 +844,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      起源
+      
+        起源
+      
     </span>
   </a>
   
@@ -623,7 +862,9 @@
         <li class="md-nav__item">
   <a href="#cmake_1" class="md-nav__link">
     <span class="md-ellipsis">
-      CMake是什么
+      
+        CMake是什么
+      
     </span>
   </a>
   
@@ -633,7 +874,9 @@
           <li class="md-nav__item">
   <a href="#c" class="md-nav__link">
     <span class="md-ellipsis">
-      C语言的构建过程
+      
+        C语言的构建过程
+      
     </span>
   </a>
   
@@ -642,7 +885,9 @@
           <li class="md-nav__item">
   <a href="#make" class="md-nav__link">
     <span class="md-ellipsis">
-      Make工具的出现
+      
+        Make工具的出现
+      
     </span>
   </a>
   
@@ -651,7 +896,9 @@
           <li class="md-nav__item">
   <a href="#cmakec" class="md-nav__link">
     <span class="md-ellipsis">
-      CMake在C语言编译中所起的作用
+      
+        CMake在C语言编译中所起的作用
+      
     </span>
   </a>
   
@@ -665,7 +912,9 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      发展
+      
+        发展
+      
     </span>
   </a>
   
@@ -674,7 +923,9 @@
         <li class="md-nav__item">
   <a href="#cmake_2" class="md-nav__link">
     <span class="md-ellipsis">
-      CMake相关资源
+      
+        CMake相关资源
+      
     </span>
   </a>
   
@@ -683,7 +934,9 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      参考资料
+      
+        参考资料
+      
     </span>
   </a>
   
@@ -714,6 +967,7 @@
     
     
     
+    
       
       
     
@@ -724,24 +978,35 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     SVN
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            SVN
+            
+  
+    SVN
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -755,9 +1020,16 @@
       <a href="../../svn/01_svn_intro/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     SVN简介
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -783,9 +1055,16 @@
       <a href="../../../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     联系我
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -803,9 +1082,59 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    CMake
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
               <article class="md-content__inner md-typeset">
                 
                   
+
 
 
 <h1 id="cmake">CMake简介</h1>
@@ -816,8 +1145,7 @@
 <!-- <center><img src="../images/01_cmake_intro_1.svg"></img></center> -->
 
 <p><img alt="" src="../images/01_cmake_intro_1.svg" /></p>
-<p>换言之，仅仅使用CMake和编译器无法完成程序的编译，还需要一个构建器（builder）。早期的CMake通常使用GNU make作为构建器，但是只能应用于Linux中。在Windows下需要使用MSVC的构建器。2011年Google推出Ninja构建器之后，由于其速度更快，逐渐成为了新的选择。并且在Windows和Linux下都可以使用。</p>
-<p>这里“项目管理”这个词借鉴了传统IDE中“项目”（Project）这个用法，当然在MSVC中应当叫做“解决方案”（Solution）。几乎所有的现代IDE都支持项目和子项目等层次化的管理方式，这也符合大型项目模块化设计和开发的需求。</p>
+<p>换言之，仅仅使用CMake和编译器无法完成程序的编译，还需要一个构建器（builder）。在Windows下可以使用msbuild作为构建器，和msvc编译器配合。2011年Google推出的Ninja构建器（JetBrains CLion默认选项）也可使用。</p>
 <h3 id="c">C语言的构建过程</h3>
 <p>为了说明CMake在C语言程序开发中所起的作用，这里先用一点篇幅简要介绍一下C语言从源代码到可执行文件过程中都发生了什么事情。</p>
 <p>C语言程序员编写的源代码文件需要经过一系列的处理才能得到最终的可执行文件。这一系列的处理通常可以被分为这三个部分：</p>
@@ -828,69 +1156,69 @@
 </ul>
 <p>其中编译过程又可以分为<em>预处理</em>和<em>编译</em>两个过程。所谓的预处理，会将全部的include语句和define语句展开。之后通过编译将C语言中的程序语句转换为汇编语句，并按照用户输入的参数进行优化。通常我们将从源代码文件、库文件（其他项目已经编译好的库文件，在当前项目中不进行开发和维护而直接使用）到可执行文件的过程称为<em>构建</em>（在现代IDE中通常被称为build）。</p>
 <p>对于一个最简单的HelloWorld程序，如下所示。</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-int main()
-{
-    printf(&quot;hello, world!\n&quot;);
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello, world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 
-    return 0;
-}
-</code></pre>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>msvc编译器的时候比较复杂，不如gcc直观，因此下面的编译和运行都使用Ubuntu下的gcc完成。</p>
 <p>在终端中使用gcc构建，即可得到可执行文件。并且不需要链接标准库以外的其他库，也不需要包含标准头文件之外的其他头文件，因此实际上不需要做上面五件事情中的后三件事情，只要指定生成目标文件所需要的源代码文件即可。</p>
-<pre><code class="language-shell">gcc main.c -o hello
-</code></pre>
+<div class="highlight"><pre><span></span><code>gcc<span class="w"> </span>main.c<span class="w"> </span>-o<span class="w"> </span>hello
+</code></pre></div>
 <p>由于只有一个源代码，并且没有包含标准头文件之外的头文件，也没有链接标准库之外的库文件，因此只需要指定要编译的源代码即可。</p>
 <p>为了模拟一个更加普适的开发场景，将输出Hello信息的代码封装为一个库，并单独编译打包成一个静态库文件，再从主函数中调用这个库。</p>
-<pre><code class="language-c">// main.c
-#include &quot;hello.h&quot;
+<div class="highlight"><pre><span></span><code><span class="c1">// main.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hello.h&quot;</span>
 
-int main()
-{
-    const char* name = &quot;CMake&quot;;
-    say_hello(name);
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CMake&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">say_hello</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
 
-    return 0;
-}
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-// hello.h
-#ifndef HELLO_H_
-#define HELLO_H_
+<span class="c1">// hello.h</span>
+<span class="cp">#ifndef HELLO_H_</span>
+<span class="cp">#define HELLO_H_</span>
 
-#include &lt;stdio.h&gt;
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-void say_hello(const char* name);
+<span class="kt">void</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
 
-#endif
+<span class="cp">#endif</span>
 
-// hello.c
-#include &quot;hello.h&quot;
+<span class="c1">// hello.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hello.h&quot;</span>
 
-void say_hello(const char* name)
-{
-    printf(&quot;Hello, %s!\n&quot;, name);
-}
-</code></pre>
+<span class="kt">void</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, %s!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>目录中的文件结构如下所示。<code>hello</code>作为一个库，其源代码被放在一个单独的目录中，目录里包括一个头文件目录和一个源代码文件目录。为了目录结构更加清晰，将库代码和头文件放在单独的一个目录中，此时这个简单的小项目中的目录结果如下所示。</p>
-<pre><code>.
+<div class="highlight"><pre><span></span><code>.
 ├── hello
 │   ├── inc
 │   │   └── hello.h
 │   └── src
 │       └── hello.c
 └── main.c
-</code></pre>
+</code></pre></div>
 <p>首先使用<code>gcc</code>编译<code>hello</code>这个库</p>
-<pre><code class="language-shell">cd hello
-gcc -c src/hello.c -Iinc
-ar rcs lib/libhello.a hello.o
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>hello
+gcc<span class="w"> </span>-c<span class="w"> </span>src/hello.c<span class="w"> </span>-Iinc
+ar<span class="w"> </span>rcs<span class="w"> </span>lib/libhello.a<span class="w"> </span>hello.o
+</code></pre></div>
 <p><code>gcc -c</code>的作用是只编译不汇编和链接，得到一个目标文件<code>hello.o</code>，然后使用静态库打包指令<code>ar</code>得到可链接的静态库文件<code>libhello.a</code>。注意Linux下的静态链接库通常以<code>.a</code>作为拓展名，并且以<code>lib</code>开始，<code>lib</code>和<code>.a</code>之间的字符串才是静态库的名称。</p>
 <p>得到静态库文件之后，可以对<code>main.c</code>进行编译和链接，最终得到可执行文件</p>
-<pre><code class="language-shell">cd ..
-gcc -o run_hello main.c -Ihello/inc -Lhello/lib -lhello
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>..
+gcc<span class="w"> </span>-o<span class="w"> </span>run_hello<span class="w"> </span>main.c<span class="w"> </span>-Ihello/inc<span class="w"> </span>-Lhello/lib<span class="w"> </span>-lhello
+</code></pre></div>
 <p>这里使用了<code>gcc</code>的多条参数：</p>
 <ul>
 <li><code>-I</code>用于指定包含路径，路径以当前所在的路径为起点，紧跟着<code>-I</code>中间没有空格。</li>
@@ -898,37 +1226,37 @@ gcc -o run_hello main.c -Ihello/inc -Lhello/lib -lhello
 <li><code>-l</code>用于指定要链接的静态库的名称，这里<code>-lhello</code>参数会让编译器在标准库目录和前面<code>-L</code>参数指定的目录下寻找<code>libhello.a</code>这个文件，<code>lib</code>这个前缀和<code>.a</code>这个后缀编译器会自动加上。</li>
 </ul>
 <p>最终函数的输出是<code>run_hello</code>这个可执行文件，执行之后的结果为</p>
-<pre><code class="language-shell">Hello, CMake!
-</code></pre>
+<div class="highlight"><pre><span></span><code>Hello,<span class="w"> </span>CMake!
+</code></pre></div>
 <h3 id="make">Make工具的出现</h3>
 <p>如果一个项目中包含多个不同的库，那么修改了其中部分库之后，就必须重新编译和链接所有依赖这些库的库和可执行文件。当项目复杂起来之后，程序员需要付出大量的时间和精力来维护库与库之间的依赖关系。而<code>make</code>这样的构建工具的出现，极大减少了程序员的工作量。</p>
 <p>仍然使用上面的例子，目前项目中包含这样一些文件，一个<code>hello</code>库和一个主函数源代码<code>main.c</code>。</p>
-<pre><code class="language-shell">.
-├── hello
-│   ├── build
-│   │   └── hello.o
-│   ├── inc
-│   │   └── hello.h
-│   ├── lib
-│   └── src
-│       └── hello.c
-└── main.c
-</code></pre>
+<div class="highlight"><pre><span></span><code>.
+├──<span class="w"> </span>hello
+│<span class="w">   </span>├──<span class="w"> </span>build
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>hello.o
+│<span class="w">   </span>├──<span class="w"> </span>inc
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>hello.h
+│<span class="w">   </span>├──<span class="w"> </span>lib
+│<span class="w">   </span>└──<span class="w"> </span>src
+│<span class="w">       </span>└──<span class="w"> </span>hello.c
+└──<span class="w"> </span>main.c
+</code></pre></div>
 <p>可以编写这样一个Makefile文件</p>
-<pre><code class="language-make">.PHONY: clean all
+<div class="highlight"><pre><span></span><code><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span> <span class="n">all</span>
 
-all: libhello.a main.c hello/inc/hello.h
-    @mkdir -p build
-    gcc -o build/run_hello main.c -Ihello/inc -Lhello/lib -lhello
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="n">libhello</span>.<span class="n">a</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">hello</span>/<span class="n">inc</span>/<span class="n">hello</span>.<span class="n">h</span>
+<span class="w">    </span>@mkdir<span class="w"> </span>-p<span class="w"> </span>build
+<span class="w">    </span>gcc<span class="w"> </span>-o<span class="w"> </span>build/run_hello<span class="w"> </span>main.c<span class="w"> </span>-Ihello/inc<span class="w"> </span>-Lhello/lib<span class="w"> </span>-lhello
 
-libhello.a: hello/src/hello.c hello/inc/hello.h
-    @mkdir -p hello/build
-    gcc -c hello/src/hello.c -Ihello/inc -o hello/build/hello.o
-    ar rcs hello/lib/libhello.a hello/build/hello.o
+<span class="nf">libhello.a</span><span class="o">:</span><span class="w"> </span><span class="n">hello</span>/<span class="n">src</span>/<span class="n">hello</span>.<span class="n">c</span> <span class="n">hello</span>/<span class="n">inc</span>/<span class="n">hello</span>.<span class="n">h</span>
+<span class="w">    </span>@mkdir<span class="w"> </span>-p<span class="w"> </span>hello/build
+<span class="w">    </span>gcc<span class="w"> </span>-c<span class="w"> </span>hello/src/hello.c<span class="w"> </span>-Ihello/inc<span class="w"> </span>-o<span class="w"> </span>hello/build/hello.o
+<span class="w">    </span>ar<span class="w"> </span>rcs<span class="w"> </span>hello/lib/libhello.a<span class="w"> </span>hello/build/hello.o
 
-clean:
-    rm -rf build &amp; rm hello/lib/libhello.a &amp; rm -rf hello/build
-</code></pre>
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>build<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>rm<span class="w"> </span>hello/lib/libhello.a<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>hello/build
+</code></pre></div>
 <p>需要注意Makefile文件中指令前面必须是制表符，不能是空格。Makefile实现了两个重要的功能：</p>
 <ul>
 <li>将复杂的指令简化为简单的指令。比如在命令行中执行<code>make</code>指令，GNU make就会在当前路径下搜索Makefile文件，并按照Makefile文件中定义好的指令执行，不在需要用户输入长长的编译指令。</li>
@@ -945,98 +1273,101 @@ clean:
 </ul>
 <p>如果使用CMake来管理一个工程，这几个过程会变得更加显式。</p>
 <p>仍然使用上面的工程目录结构，这次不需要手动编写Makefile，而是需要编写CMake的工程文件CMakeLists.txt</p>
-<pre><code class="language-shell">.
-├── CMakeLists.txt
-├── hello
-│   ├── inc
-│   │   └── hello.h
-│   ├── lib
-│   └── src
-│       └── hello.c
-└── main.c
-</code></pre>
+<div class="highlight"><pre><span></span><code>.
+├──<span class="w"> </span>CMakeLists.txt
+├──<span class="w"> </span>hello
+│<span class="w">   </span>├──<span class="w"> </span>inc
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>hello.h
+│<span class="w">   </span>├──<span class="w"> </span>lib
+│<span class="w">   </span>└──<span class="w"> </span>src
+│<span class="w">       </span>└──<span class="w"> </span>hello.c
+└──<span class="w"> </span>main.c
+</code></pre></div>
 <p>CMakeLists.txt文件中的内容如下</p>
-<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.21)
+<div class="highlight"><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.21</span><span class="p">)</span>
 
-project(Hello VERSION 0.1 LANGUAGES C)
+<span class="nb">project</span><span class="p">(</span><span class="s">Hello</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">0.1</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">C</span><span class="p">)</span>
 
-add_library(hello STATIC
-    hello/src/hello.c
-    )
-target_include_directories(hello PUBLIC
-    hello/inc
-    )
+<span class="nb">add_library</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">STATIC</span>
+<span class="w">    </span><span class="s">hello/src/hello.c</span>
+<span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">PUBLIC</span>
+<span class="w">    </span><span class="s">hello/inc</span>
+<span class="p">)</span>
 
-add_executable(run_hello main.c)
-target_link_libraries(run_hello PRIVATE
-    hello
-    )
-</code></pre>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">run_hello</span><span class="w"> </span><span class="s">main.c</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">run_hello</span><span class="w"> </span><span class="s">PRIVATE</span>
+<span class="w">    </span><span class="s">hello</span>
+<span class="p">)</span>
+</code></pre></div>
 <p>其中前面两行<code>cmake_minimum_required</code>和<code>project</code>这两个语句是一个工程的固定格式，用于指定CMake的最低版本要求和工程的名称，暂时不去深究。</p>
 <p><code>add_library</code>用于指定生成一个链接库，<code>hello</code>是库的名称，<code>STATIC</code>指定库的类型是静态链接库，<code>hello/src/hello/c</code>指定了生成库所需要的源代码文件，这里只包含一个源代码文件。<code>hello.c</code>中包含了<code>hello.h</code>这个头文件，不在系统头文件目录中，因此需要手动指定，这个过程通过<code>target_include_libraries</code>语句实现。语句中需要首先指定目标的名称（<code>hello</code>），然后指定包含的类型<code>PUBLIC</code>，意味着每一个依赖<code>hello</code>库的目标都会自动添加上下面的包含路径，<code>hello/inc</code>是要添加的包含路径。</p>
 <p>接下来的<code>add_executable</code>用于指定生成一个可执行文件，<code>run_hello</code>是可执行文件的名称，<code>main.c</code>是所需要的源代码文件，可以有多个源代码文件。<code>main.c</code>中使用了<code>hello</code>库中的函数，因此需要链接到<code>hello</code>库，这个过程通过<code>target_link_libraries</code>语句实现。由于之前已经指定了<code>hello</code>库的包含路径是<code>PUBLIC</code>类型，因此指定<code>run_hello</code>目标链接到<code>hello</code>之后，<code>run_hello</code>目标的包含路径中会自动添加<code>hello</code>的全部包含路径。</p>
 <p>接下来只需要执行<code>cmake .</code>即可，其中<code>.</code>是<code>cmake</code>指令的参数，用于指定CMakeLists.txt文件相对当前路径所在的路径。如果直接在根目录下执行就直接指定当前路径作为参数即可。但是CMake会生成大量的中间文件，为了和工程源代码文件隔离，通常会在根目录下建立一个<code>build</code>目录用于保存CMake生成的中间文件。</p>
-<pre><code class="language-shell">mkdir build
-cd build
-cmake ..
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>..
+</code></pre></div>
 <p>在<code>build</code>路径内部，由于CMakeLists.txt文件在上一级目录中，因此需要使用<code>..</code>作为参数。</p>
 <p>执行完成之后，CMake没有生成库文件和可执行程序，而是生成了一个makefile文件。如下所示。这也正是为什么说CMake不是一个构建器，而是一个工程管理工具。</p>
-<pre><code class="language-shell">.
-├── CMakeLists.txt
-├── build
-│   ├── CMakeCache.txt
-│   ├── CMakeFiles
-│   │   ├── 3.22.1
-│   │   │   ├── CMakeCCompiler.cmake
-│   │   │   ├── CMakeDetermineCompilerABI_C.bin
-│   │   │   ├── CMakeSystem.cmake
-│   │   │   └── CompilerIdC
-│   │   │       ├── CMakeCCompilerId.c
-│   │   │       ├── a.out
-│   │   │       └── tmp
-│   │   ├── CMakeDirectoryInformation.cmake
-│   │   ├── CMakeOutput.log
-│   │   ├── CMakeTmp
-│   │   ├── Makefile.cmake
-│   │   ├── Makefile2
-│   │   ├── TargetDirectories.txt
-│   │   ├── cmake.check_cache
-│   │   ├── hello.dir
-│   │   │   ├── DependInfo.cmake
-│   │   │   ├── build.make
-│   │   │   ├── cmake_clean.cmake
-│   │   │   ├── cmake_clean_target.cmake
-│   │   │   ├── compiler_depend.make
-│   │   │   ├── compiler_depend.ts
-│   │   │   ├── depend.make
-│   │   │   ├── flags.make
-│   │   │   ├── hello
-│   │   │   │   └── src
-│   │   │   ├── link.txt
-│   │   │   └── progress.make
-│   │   ├── progress.marks
-│   │   └── run_hello.dir
-│   │       ├── DependInfo.cmake
-│   │       ├── build.make
-│   │       ├── cmake_clean.cmake
-│   │       ├── compiler_depend.make
-│   │       ├── compiler_depend.ts
-│   │       ├── depend.make
-│   │       ├── flags.make
-│   │       ├── link.txt
-│   │       └── progress.make
-│   ├── Makefile
-│   └── cmake_install.cmake
-├── hello
-│   ├── inc
-│   │   └── hello.h
-│   ├── lib
-│   └── src
-│       └── hello.c
-└── main.c
-</code></pre>
+<div class="highlight"><pre><span></span><code>.
+├──<span class="w"> </span>CMakeLists.txt
+├──<span class="w"> </span>build
+│<span class="w">   </span>├──<span class="w"> </span>CMakeCache.txt
+│<span class="w">   </span>├──<span class="w"> </span>CMakeFiles
+│<span class="w">   </span>├──<span class="w"> </span>Makefile
+│<span class="w">   </span>└──<span class="w"> </span>cmake_install.cmake
+├──<span class="w"> </span>hello
+│<span class="w">   </span>├──<span class="w"> </span>inc
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>hello.h
+│<span class="w">   </span>├──<span class="w"> </span>lib
+│<span class="w">   </span>└──<span class="w"> </span>src
+│<span class="w">       </span>└──<span class="w"> </span>hello.c
+└──<span class="w"> </span>main.c
+</code></pre></div>
 <p>接下来在<code>build</code>目录下执行<code>make</code>指令，即可得到库文件libhello.a和可执行程序run_hello。</p>
+<p>现代CMake已经把外部生成作为标准的使用方法，可以通过参数配置自动生成build目录，并自动将中间文件生成到该目录中。</p>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-G<span class="w"> </span><span class="s2">&quot;Visual Studio 17 2022&quot;</span><span class="w"> </span>-A<span class="w"> </span>x64<span class="w"> </span>-T<span class="w"> </span>ClangCL<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--config<span class="w"> </span>Release
+</code></pre></div>
+<p>其中各个参数的含义为：</p>
+<ul>
+<li><code>-S .</code>：使用当前路径作为项目根目录，当前路径下必须有一个CMakeLists.txt文件，并且此文件作为当前CMake工程的根配置文件；</li>
+<li><code>-B build</code>：指定build为构建目录，所有的中间文件和直接生成的目标文件都会保存在此目录下；</li>
+<li><code>-G "Visual Studio 17 2022"</code>：指定生成器，这里使用mvsc2022作为生成器；</li>
+<li><code>-A x64</code>：指定程序的目标运行平台为x64平台；</li>
+<li><code>-T ClangCL</code>：指定需要使用的工具链，也即具体的编译器，需要和生成器配合，msvc生成器（msbuild）支持微软自己的msvc编译器cl以及在此基础上开发的clang-cl（兼容clang编译器），这里指定使用clang-cl编译器；</li>
+</ul>
+<p><code>&amp;&amp;</code>表示执行完第一项指令之后，紧跟着直接执行第二项指令，各参数含义为：</p>
+<ul>
+<li><code>--build build</code>：指定生成目录，也即上一条指令中<code>-B</code>参数指定的目录；</li>
+<li><code>--config Release</code>：指定编译方式，包括Release和Debug两种。</li>
+</ul>
+<p>如果要使用Ninja作为生成器的话，则指令为</p>
+<div class="highlight"><pre><span></span><code>cmake -G Ninja -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang-cl
+</code></pre></div>
+<p>最后的两个选项分别指定了构建类型为Release和编译器为clang-cl。</p>
+<p>如果不希望在命令行中输入这些，可以在项目根目录下设置一个<code>CMakePresets.json</code>文件</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;configurePresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clang-ninja&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Clang-CL x64 Ninja&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;generator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ninja&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;binaryDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${sourceDir}/build&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cacheVariables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CMAKE_C_COMPILER&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clang-cl&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CMAKE_CXX_COMPILER&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clang-cl&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CMAKE_BUILD_TYPE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Release&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这样在构建时只需要：</p>
+<div class="highlight"><pre><span></span><code>cmake --preset clang-ninja
+cmake --build build
+</code></pre></div>
 <h2 id="_2">发展</h2>
 <ul>
 <li>2002年，CMake在ITK项目中取得了成功，Kitware顺势把VTK的构建也迁移到了CMake并延续至今。</li>
@@ -1087,7 +1418,7 @@ cmake ..
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -1096,30 +1427,30 @@ cmake ..
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../cuda/01_build_env/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 开发环境的搭建">
+          <a href="../../matlab/mex/" class="md-footer__link md-footer__link--prev" aria-label="上一页: MATLAB-C/C++混合编程">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
-                开发环境的搭建
+                MATLAB-C/C++混合编程
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../svn/01_svn_intro/" class="md-footer__link md-footer__link--next" aria-label="Next: SVN简介">
+          <a href="../../svn/01_svn_intro/" class="md-footer__link md-footer__link--next" aria-label="下一页: SVN简介">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
                 SVN简介
@@ -1156,10 +1487,13 @@ cmake ..
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.path", "toc.integrate", "toc.follow", "navigation.top", "navigation.footer", "navigation.expand", "search.highlight", "search.share", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.path", "toc.integrate", "toc.follow", "navigation.top", "navigation.footer", "navigation.expand", "search.highlight", "search.share", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../../javascripts/mathjax.js"></script>
       
