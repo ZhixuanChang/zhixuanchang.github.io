@@ -756,6 +756,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cmakec-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于CMake的C++ IDE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1497,6 +1508,11 @@ cmake<span class="w"> </span>..
 <div class="highlight"><pre><span></span><code>cmake --preset clang-ninja
 cmake --build build
 </code></pre></div>
+<h2 id="cmakec-ide">基于CMake的C++ IDE</h2>
+<p>上面已经提到CMake相比其他IDE的一个重要优点是极致的轻量化，仅仅几百兆的大小，在性能一般的计算机上会给程序员比较好的开发体验。同时可以搭配任意中意的编辑器进行开发。</p>
+<p>现在，VS Code中的CMake Tools插件对CMake的支持非常好，项目的配置、构建、调试基本都有一键式的解决方案。因此，目前使用VS Code+CMake开发C++程序的体验非常好。</p>
+<p>此外，VS Code丰富的插件是选择这一组合的另一理由。AI辅助编程的应用越来越普遍，而几乎所有的AI大模型都提供有VS Code的插件。甚至早期出现的一些所谓的AI IDE实际上就是VS Code的分支开发。</p>
+<p>在VS Code中安装CMake Tools插件（需要注意开发者是Microsoft）之后，通过<code>Ctrl + Shift + P</code>打开命令面板，输入<code>CMake: Configure</code>，选择对应的配置，即可完成项目的配置。选择<code>CMake: Build</code>（或者快捷键<code>F7</code>）即可完成项目的构建。选择<code>CMake: Debug</code>（或者快捷键<code>Shift + F5</code>）即可启动程序调试，支持直接在程序中设置断点。选择<code>CMake: Run</code>（或者快捷键<code>Ctrl + Shift + F5</code>）即可运行程序。程序构建的模式（调试或发布）由<code>CMake: Select Variant</code>指定。同时还支持使用Google Test或者CTest等框架编写测试代码。可以使用<code>CMake: Run Tests</code>运行测试代码。</p>
 <h2 id="_2">发展</h2>
 <ul>
 <li>2002年，CMake在ITK项目中取得了成功，Kitware顺势把VTK的构建也迁移到了CMake并延续至今。</li>
