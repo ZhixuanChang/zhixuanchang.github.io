@@ -2,138 +2,158 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://zhixuanchang.github.io/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/about/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/contact/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/literature/WeekReview01/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/literature/WeekReview02/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/literature/WeekReview03/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/literature/WeekReview26.05/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/acoustics/fourier_acoustics/fourier_acoustics/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/acoustics/wavefield_sim/01kwave/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/acoustics/wavefield_sim/02field-ii/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/acoustics/wavefield_sim/03comsol/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/acoustics/wavefield_sim/wavefield_sim/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/math/pde/01ComplexNumber/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/math/pde/02ComplexFunction/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/math/pde/pde/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/c_cpp/01_unique_ptr/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/cmake/01_cmake_introduction/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/cmake/02_cmake_advances/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/cmake/03_cmake_ide/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/cuda/01_build_env/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/cuda/02_cuda_helloworld/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/git/git-notes/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/hdl/01_verilog_intro/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/make/make/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/matlab/matlab%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B5%8B%E8%AF%95/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/matlab/mex/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/matlab/oop/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/python/01_python_intro/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/python/pytest_notes/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/qt/config/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/svn/01_svn_intro/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/svn/02_svn_create_repo/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/vivado/vivado_design_suite/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://zhixuanchang.github.io/notes/programming/vscode/01_vscode/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/projects/muss/introduction/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/research/NDT/dpwi/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/research/NDT/rail_screw_hole_inspection/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/research/ultrasonic_imaging/nspwi/</loc>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://zhixuanchang.github.io/research/ultrasonic_instrument/ultrasonic_fmc_inst/</loc>
+         <lastmod>2026-02-05</lastmod>
     </url>
 </urlset>
